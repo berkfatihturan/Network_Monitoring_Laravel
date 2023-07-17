@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Servers extends Model
+class Ports extends Model
 {
     use HasFactory;
 
-    public function port(){
-        return $this->hasMany(Ports::class);
+    public function server(){
+        return $this->belongsTo(Servers::class);
     }
 }

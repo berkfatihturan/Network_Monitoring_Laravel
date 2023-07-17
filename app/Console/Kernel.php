@@ -10,8 +10,16 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
+
+    protected $commands = [
+        Commands\CheckDatabase::class,
+        Commands\CheckPorts::class,
+    ];
+
     protected function schedule(Schedule $schedule): void
     {
+        $schedule->command('app:check-database')->everyMinute();
+        $schedule->command('app:check-ports')->everyMinute();
         // $schedule->command('inspire')->hourly();
     }
 

@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700");
+
+:root {
+    --primary: #001C30;
+    --secondory: #176B87;
+    --light: #64CCC5;
+    --white: #64CCC5;
+}
+
+* {
+    font-family: "Noto Serif Makasar", serif;
+    color: white;
+}
+
 *,
 *:before,
 *:after {
@@ -6,9 +19,9 @@
 }
 
 body {
-    padding: 24px;
     font-family: "Source Sans Pro", sans-serif;
     margin: 0;
+
 }
 
 h1,
@@ -19,16 +32,211 @@ h5,
 h6 {
     margin: 0;
 }
-
-.container {
-    max-width: 1000px;
-    margin-right: auto;
-    margin-left: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* header -start- */
+header {
+    width: 100%;
+    height: 5vh;
+    min-height: 80px;
+    padding: 15px 20px 0 20px;
+    background-color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
+
+.header-title {
+    display: inline-block;
+    width: 70%;
+    position: relative;
+    bottom: 20px;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.user-info p {
+    margin: 0 !important;
+    margin-right: 10px !important;
+    display: inline-block;
+    padding-block: 1.3vh;
+}
+
+.user-info a {
+    margin-right: 15px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    display: inline-block;
+    font-size: 30px;
+}
+
+.user-info {
+    display: inline-block;
+    width: 29%;
+}
+
+.user-profile {
+    display: inline-block;
+    border-radius: 50%;
+    width: 50px;
+}
+/* header -end- */
+
+/* -sidebar -start-*/
+
+#sidebar {
+    width: 14%;
+    height: 100vh;
+    background: rgb(233, 238, 238, 0.7);
+    position: fixed;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    min-width: 180px;
+
+}
+
+.sidebar-list{
+    padding-left: 10px;
+    padding-top: 20px;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar-list__item{
+    font-size: 1.4rem;
+    padding: 10px;
+    margin-bottom: 5px;
+    color: #000 !important;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.sidebar-list__item:hover{
+    background-color: var(--light);
+    border-radius: 10px;
+}
+
+
+.fa-angle-right{
+    color: rgb(0,0,0,0.5);
+    font-size: 1.2rem;
+}
+
+
+/* -sidebar -end-*/
+
+
+/* main -start- */
+
+main{
+    margin-left: 16%;
+    margin-top: 30px;
+    width: 82%;
+    min-width: 700px;
+}
+
+.section_header{
+    border-bottom: 5px solid var(--secondory);
+    margin-bottom: 10px;
+}
+
+#admin_section_title{
+    display: inline-block;
+    color: #000;
+    letter-spacing: 2px;
+    font-weight: 500;
+    width: calc(100% - 100px);
+}
+
+.addButton{
+    width: 80px;
+    background-color: var(--white);
+    color: white;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+#collapseForm{
+
+    margin-bottom: 10px !important;
+}
+
+#collapseForm label{
+    color: #000 !important;
+}
+
+#collapseForm input,
+#collapseForm select,
+#collapseForm select option{
+    color: black;
+    width: 100%;
+}
+
+
+#updateForm {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: var(--light);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+#updateForm p {
+    margin: 0;
+}
+
+
+#updateForm a {
+    font-size: 1.6rem;
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#updateForm a:hover i{
+
+    color: red;
+}
+
+#updateForm hr {
+    margin-block: 5px;
+}
+
+#updateForm input,
+#updateForm select,
+#updateForm select option{
+    color: black;
+    width: 100%;
+}
+
+.blur::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.blur header,
+.blur #sidebar,
+.blur .table-row{
+    z-index: -1 !important;
+
+}
+
+
+
+/* main -end- */
+
+/* table -start- */
 
 .table {
     width: 100%;
@@ -43,10 +251,42 @@ h6 {
 }
 
 .table-row {
+    position: relative;
     display: flex;
     width: 100%;
-    padding: 18px 0;
+    padding: 18px 0 30px 0;
+    margin: 20px 0 ;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.table-data{
+    color: black;
+}
+
+.table-row [id^="collapseItem"]{
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    color: black;
+
+
+}
+
+.table-item-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-block: 1px !important;
+    background: rgb(100,204,197,0.3) !important;
+}
+
+.table-item-bottom:hover{
+    cursor: pointer;
+    background: rgb(100,204,197,1) !important;
+}
+
+
 .table-row:nth-of-type(odd) {
     background: #eeeeee;
 }
@@ -56,6 +296,24 @@ h6 {
     flex: 1 1 20%;
     text-align: center;
 }
+
+.table-item i{
+    position: relative;
+    top:-5px;
+    color: #1a202c!important;
+    padding: 5px;
+    margin-inline: 2px;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 5px;
+}
+
+.table-item:hover i{
+    cursor: pointer;
+    background: rgb(128, 128, 128,0.2);
+    color: red;
+}
+
 
 .header__item {
     text-transform: uppercase;
@@ -84,3 +342,5 @@ h6 {
 .filter__link.asc::after {
     content: "(asc)";
 }
+
+/* table -end- */
