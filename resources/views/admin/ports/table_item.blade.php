@@ -1,8 +1,8 @@
-<div class="table-data">{{$item->id}}</div>
+<div class="table-data id">{{$item->id}}</div>
 <div class="table-data">{{$item->server->ip}}</div>
 <div class="table-data">{{$item->port_name}}</div>
 <div class="table-data">{{$item->port}}</div>
-<div class="table-data">{{$item->status}}</div>
+<div class="table-data">@if($item->status) <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem"></i> @else <i class="fa-solid fa-square-xmark" style="color: red;font-size: 2rem;"></i> @endif</div>
 <div class="table-data">{{$item->updated_at}} <span style="font-size: small; color: black; opacity: .6">(utc)</span></div>
 
 <div class="table-item" onclick="showUpdateForm(this,{{$item->id}})" ><i class="fa-solid fa-wrench"></i></div>

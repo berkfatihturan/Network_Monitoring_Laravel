@@ -33,6 +33,7 @@ class CheckDatabase extends Command
         $status = null;
 
         // Execute the ping command
+        // if on linux > ping -c < use
         exec("ping -n 1 $host", $outcome, $status);
 
         // Check the status code

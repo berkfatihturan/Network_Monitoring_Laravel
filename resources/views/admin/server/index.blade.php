@@ -62,10 +62,11 @@
 
     <div class="table">
         <div class="table-header">
-            <div class="header__item"><a id="name" class="filter__link" href="#">Id</a></div>
+            <div class="header__item id"><a id="name" class="filter__link" href="#">Id</a></div>
             <div class="header__item"><a id="name" class="filter__link" href="#">Name</a></div>
             <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">IP</a></div>
-            <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Status</a>
+            <div class="header__item temp"><a id="wins" class="filter__link filter__link--number" href="#">Temp</a></div>
+            <div class="header__item status"><a id="draws" class="filter__link filter__link--number" href="#">Status</a>
             </div>
             <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Update Date</a>
             </div>

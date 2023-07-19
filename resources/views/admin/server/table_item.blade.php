@@ -1,7 +1,8 @@
-<div class="table-data">{{$item->id}}</div>
+<div class="table-data id">{{$item->id}}</div>
 <div class="table-data">{{$item->server_name}}</div>
 <div class="table-data">{{$item->ip}}</div>
-<div class="table-data">@if($item->status) <i class="fa-solid fa-square" style="color: green"></i> @else <i class="fa-solid fa-circle" style="color: red"></i> @endif</div>
+<div class="table-data temp">0°C</div>
+<div class="table-data status">@if($item->status) <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem"></i> @else <i class="fa-solid fa-square-xmark" style="color: red;font-size: 2rem;"></i> @endif</div>
 <div class="table-data">{{$item->updated_at}} <span style="font-size: small; color: black; opacity: .6">(utc)</span></div>
 <div class="table-item" onclick="showUpdateForm(this,{{$item->id}})" ><i class="fa-solid fa-wrench"></i></div>
 <div class="table-item" title="Delete" onclick="location.href='{{ route('admin_server_destroy',['id' => $item->id]) }}';"><i class="fa-solid fa-trash"></i></div>

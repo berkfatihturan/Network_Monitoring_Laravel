@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminPanel\AdminHomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\AdminServerController as AdminServerController;
 use App\Http\Controllers\AdminPanel\AdminPortsController as AdminPortsController;
+use App\Http\Controllers\AdminPanel\AdminSettingSController as AdminSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,18 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
         Route::get('/reload/{id_item}/{is_open}', 'reloadPage')->name('reloadPage');
     });
+
+
+
+    /* Admin Settings Panel Routes*/
+    Route::prefix('/settings')->name("settings_")->controller(AdminSettingController::class)->group(function (){
+        Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+        Route::post('/update', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::get('/reload/{id_item}/{is_open}', 'reloadPage')->name('reloadPage');
+    });
+
 });
 
 

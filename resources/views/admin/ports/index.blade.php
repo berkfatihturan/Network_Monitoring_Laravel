@@ -71,7 +71,7 @@
 
     <div class="table">
         <div class="table-header">
-            <div class="header__item"><a id="name" class="filter__link" href="#">Id</a></div>
+            <div class="header__item id"><a id="name" class="filter__link" href="#">Id</a></div>
             <div class="header__item"><a id="name" class="filter__link" href="#">Server Ip</a></div>
             <div class="header__item"><a id="name" class="filter__link" href="#">Port Name</a></div>
             <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">PORT</a></div>
@@ -79,7 +79,7 @@
             </div>
             <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Update Date</a>
             </div>
-            <div class="header__space" style="width: 120px"></div>
+            <div class="header__space" style="width: 200px"></div>
         </div>
         <div class="table-content">
             @foreach($portData as $item)
