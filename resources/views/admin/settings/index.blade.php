@@ -19,7 +19,7 @@
 @section('content')
 
     <div class="section_header">
-        <h1 id="admin_section_title">SETTINGS</h1>
+        <h1 id="admin_section_title">SETTINGS1</h1>
 
     </div>
 
