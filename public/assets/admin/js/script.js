@@ -1,8 +1,8 @@
-$(document).ready(function () {
+/*$(document).ready(function () {
     //$(".sidebar-list__item").prepend('<i class="fa-solid fa-angle-right"></i>');
 
 
-});
+});*/
 
 function toggleCollapse() {
     var element = $("#collapseForm");
@@ -24,4 +24,7 @@ function toggleCollapseItem(id) {
     }
 }
 
+function closeAllSidebarItem(){
+    $(".sidebar-list__item").toggle()
+}
 

@@ -2,16 +2,24 @@
 
 :root {
     --primary: #001C30;
+    --primary-rgb: 0,28,48;
+
     --secondory: #176B87;
+    --secondory-white: #64CCC5;
+
     --light: #64CCC5;
-    --white: #64CCC5;
-    --text_color: white;
-    --header_color: white;
+    --light-rgb: 100,204,197;
+
+    --content-text_color: black;
+    --title-text_color: black;
+    --sidebar-text_color: black;
+
+    --sidebar-background_color: red;
 }
 
 * {
     font-family: "Noto Serif Makasar", serif;
-    color: var(--text_color);
+    color: var(--content-text_color);
 }
 
 *,
@@ -40,14 +48,14 @@ header {
     height: 5vh;
     min-height: 80px;
     padding: 15px 20px 0 20px;
-    background-color: var(--white);
+    background-color: var(--secondory-white);
     position: sticky;
     top: 0;
     z-index: 1;
 }
 
 header *{
-    color: var(--header_color) !important;
+    color: var(--title-text_color) ;
 }
 
 .header-title {
@@ -60,7 +68,6 @@ header *{
 
 .user-info p {
     margin: 0 !important;
-    margin-right: 10px !important;
     display: inline-block;
     padding-block: 1.3vh;
 }
@@ -75,9 +82,25 @@ header *{
 
 .user-info {
     position: absolute;
-    top:15px;
+    top:9px;
     right: 50px;
     display: inline-block;
+
+}
+.user-info .dropdown-toggle{
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.4rem;
+}
+
+.user-info .dropdown-toggle:focus{
+   box-shadow: none;
+}
+
+.user-info .dropdown-menu{
+    background: black;
 }
 
 .user-profile {
@@ -91,12 +114,11 @@ header *{
 /* -sidebar -start-*/
 
 #sidebar {
-    width: 14%;
+    width: 13vw;
     height: 100vh;
     background: rgb(233, 238, 238, 0.7);
     position: fixed;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    min-width: 180px;
 
 }
 
@@ -108,10 +130,11 @@ header *{
 }
 
 .sidebar-list__item{
+    display: block;
     font-size: 1.4rem;
     padding: 10px;
     margin-bottom: 5px;
-    color: #000 !important;
+    color: var(--sidebar-text_color) !important;
     border-radius: 10px;
     margin-right: 10px;
     cursor: pointer;
@@ -120,6 +143,10 @@ header *{
 .sidebar-list__item:hover{
     background-color: var(--light);
     border-radius: 10px;
+}
+
+.sidebar-list__button{
+   display: none;
 }
 
 
@@ -135,28 +162,28 @@ header *{
 /* main -start- */
 
 main{
-    margin-left: 16%;
+    margin-left: 15%;
     margin-top: 30px;
     width: 82%;
-    min-width: 700px;
 }
 
 .section_header{
     border-bottom: 5px solid var(--secondory);
     margin-bottom: 10px;
+
 }
 
 #admin_section_title{
     display: inline-block;
-    color: #000;
     letter-spacing: 2px;
     font-weight: 500;
     width: calc(100% - 100px);
+    color: var(--title-text_color) !important;
 }
 
 .addButton{
     width: 80px;
-    background-color: var(--white);
+    background-color: var(--secondory-white);
     color: white;
     margin-bottom: 12px;
     font-weight: 500;
@@ -314,12 +341,12 @@ main{
     width: 100%;
     text-align: center;
     padding-block: 1px !important;
-    background: rgb(100,204,197,0.3) !important;
+    background: rgb(var(--light-rgb),0.4);
 }
 
 .table-item-bottom:hover{
     cursor: pointer;
-    background: rgb(100,204,197,1) !important;
+    background: rgb(var(--light-rgb),1) !important;
 }
 
 

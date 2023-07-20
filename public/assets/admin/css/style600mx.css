@@ -1,0 +1,94 @@
+@media only screen and (max-width: 600px) {
+
+    #sidebar{
+        position: unset;
+        display: flex;
+        height: fit-content;
+        width: 100vw;
+    }
+
+    .sidebar-list{
+        margin-bottom: 10px;
+        padding-top: 10px;
+    }
+    .sidebar-list__item{
+        display: none;
+    }
+
+    .sidebar-list__button{
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        padding-bottom: 0;
+    }
+
+    main{
+        width: 95vw;
+        margin-left: 3%;
+        margin-top: 17px;
+    }
+
+
+    #admin_section_title {
+
+    }
+
+    .table {
+        overflow: auto;
+    }
+
+    .table-header {
+        width: 200%;
+    }
+
+    .table-content {
+        width: 200%;
+    }
+
+    #collapseForm .col-sm-12 input{
+        margin-top: 0 !important;
+    }
+
+    #updateForm{
+        width: 60vw;
+
+        top: 50% !important;
+        left: 50% !important;
+    }
+
+    .user-info{
+        top: 17px;
+        right: 13px;
+    }
+
+    .user-info p{
+        display: none;
+    }
+
+    .user-info .user-profile{
+        width: 30px;
+    }
+
+    .header-title{
+        display: flex;
+        justify-content:center;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

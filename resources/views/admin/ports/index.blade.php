@@ -44,7 +44,7 @@
     <div id="collapseForm" style="display: none;">
         <form action="{{route('admin_ports_store')}}" method="POST" enctype="multipart/form-data" class="row">
             @csrf
-            <div class="col-3">
+            <div class="col-lg-3 col-sm-12">
                 <label for="fname">Ip:</label><br>
 
                 <select  name="server_id">
@@ -53,15 +53,15 @@
                     @endforeach
                 </select><br>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-sm-12">
                 <label for="fname">Port Name:</label><br>
                 <input type="text" name="port_name"><br>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-sm-12">
                 <label for="lname">Port:</label><br>
                 <input type="text" name="port"><br><br>
             </div>
-            <div class="col-1">
+            <div class="col-lg-3 col-sm-12">
                 <input type="submit" value="Submit"
                        style="background-color: black; color: white; padding: 10px; border-radius: 10px; margin-top: 10px;">
             </div>

@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminPanel\AdminHomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\AdminServerController as AdminServerController;
 use App\Http\Controllers\AdminPanel\AdminPortsController as AdminPortsController;
-use App\Http\Controllers\AdminPanel\AdminSettingSController as AdminSettingController;
+use App\Http\Controllers\AdminPanel\AdminSettingsController as AdminSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*

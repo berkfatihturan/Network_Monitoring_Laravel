@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Ports;
 use App\Models\Servers;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class AdminPortsController extends Controller
@@ -19,11 +20,13 @@ class AdminPortsController extends Controller
     {
         $serverData = Servers::all();
         $portData = Ports::all();
+        $settingsData = Settings::first();
 
         return view('admin.ports.index', [
             'serverData' => $serverData,
             'portData' => $portData,
-            'display_status' => 'none'
+            'display_status' => 'none',
+            'settingsData' => $settingsData
         ]);
     }
 

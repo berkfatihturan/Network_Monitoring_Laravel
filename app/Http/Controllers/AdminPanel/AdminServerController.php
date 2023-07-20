@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\MyBackgroundJob;
 use App\Mail\AlertMail;
 use App\Models\Servers;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,10 +23,12 @@ class AdminServerController extends Controller
     {
 
         $serverData = Servers::all();
+        $settingsData = Settings::first();
 
         return view('admin.server.index', [
             'serverData' => $serverData,
-            'display_status' => 'none'
+            'display_status' => 'none',
+            'settingsData' => $settingsData
         ]);
     }
 

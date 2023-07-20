@@ -3,17 +3,8 @@
 @section('title', 'Admin Panel')
 
 @section('head')
-    <style>
-
-        :root {
-            --primary: #001C30;
-            --secondory: #176B87;
-            --light: #64CCC5;
-            --white: {{$settingsData['primary_color']}}!important;
-        }
 
 
-    </style>
 @endsection
 
 @section('content')
@@ -37,7 +28,8 @@
         <input type="text" name="description" value="{{$settingsData['description']}}"><br><br>
 
         <label for="permission_to_mail"> Permission to Mail:</label>
-        <input type="checkbox" name="permission_to_mail" value="1" @if($settingsData['permission_to_mail']) checked @endif>
+        <input type="checkbox" name="permission_to_mail" value="1"
+               @if($settingsData['permission_to_mail']) checked @endif>
         <br>
 
         <label for="address">Address:</label><br>
@@ -64,25 +56,5 @@
 @endsection
 
 @section('foot')
-    <script>
 
-        function reloadDiv() {
-            $.ajax({
-                url: "{{ route('admin_index' ) }}",
-                type: "GET",
-                success: function (response) {
-                    $('#your-div').html(response);
-                },
-                error: function (xhr) {
-                    // Handle any error that may occur during the request
-                }
-            });
-        }
-
-        // Call the function to reload the div initially
-        /*reloadDiv();*/
-
-        // Set up the interval to reload the div every 30 seconds
-        /*setInterval(reloadDiv, 30000); // 30 seconds = 30000 milliseconds*/
-    </script>
 @endsection
