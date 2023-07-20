@@ -36,7 +36,7 @@
 @section('content')
 
     <div class="section_header">
-        <h1 id="admin_section_title">SERVERS1</h1>
+        <h1 id="admin_section_title">SERVERS</h1>
         <a class="btn btn-info addButton" onclick="toggleCollapse()"> <i class="fa-solid fa-plus"></i> ADD
         </a>
     </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="table-content">
             @foreach($serverData as $item)
-                <div class="table-row" id="{{$item->id}}">
+                <div class="table-row @if($item->status)  @else out-of-servis @endif" id="{{$item->id}}">
                     @include('admin.server.table_item')
                 </div>
             @endforeach
@@ -120,6 +120,7 @@
 
         // Function to initiate the reloading of all div elements
         function reloadAllDivs() {
+
             for (let i = 0; i < divElements.length; i++) {
                 reloadDiv(divElements[i]);
             }
@@ -127,14 +128,24 @@
 
         // Call the function to reload all div elements initially
         reloadAllDivs();
-
         // Set up intervals for each div element
         for (let i = 0; i < divElements.length; i++) {
             setInterval(function (i) {
                 return function () {
                     reloadDiv(divElements[i]);
+                    setBoxColorOnStatus();
                 };
             }(i), divElements[i].interval);
+        }
+
+        function setBoxColorOnStatus() {
+            $(".table-row .status-info").each(function () {
+                if ($(this).text() === "1") {
+                    $(this).parent().parent().removeClass("out-of-servis");
+                } else {
+                    $(this).parent().parent().addClass("out-of-servis");
+                }
+            });
         }
     </script>
 @endsection

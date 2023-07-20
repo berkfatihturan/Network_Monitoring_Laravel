@@ -83,7 +83,7 @@
         </div>
         <div class="table-content">
             @foreach($portData as $item)
-                <div class="table-row" id="{{$item->id}}">
+                <div class="table-row @if($item->status)  @else out-of-servis @endif" id="{{$item->id}}" id="{{$item->id}}">
                     @include('admin.ports.table_item')
                 </div>
             @endforeach
