@@ -36,7 +36,7 @@
 @section('content')
 
     <div class="section_header">
-        <h1 id="admin_section_title">SERVERS</h1>
+        <h1 id="admin_section_title">SERVERS1</h1>
         <a class="btn btn-info addButton" onclick="toggleCollapse()"> <i class="fa-solid fa-plus"></i> ADD
         </a>
     </div>
