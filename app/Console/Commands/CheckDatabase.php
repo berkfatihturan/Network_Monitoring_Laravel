@@ -35,7 +35,7 @@ class CheckDatabase extends Command
         // Execute the ping command
         // if on linux > ping -c < use
         // if on windows > ping -n < use
-        exec("ping -n 1 $host", $outcome, $status);
+        exec("ping -c 1 $host", $outcome, $status);
 
         // Check the status code
         if ($status === 0) {
