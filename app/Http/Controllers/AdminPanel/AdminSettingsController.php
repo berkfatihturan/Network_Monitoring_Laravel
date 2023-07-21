@@ -115,7 +115,7 @@ class AdminSettingsController extends Controller
 
         $data->save();
 
-
+        $this->updateMailAdress();
 
         return redirect('admin/settings');
 
