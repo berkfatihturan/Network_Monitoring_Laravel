@@ -22,6 +22,7 @@
             --secondory: #176B87;
             --light: #64CCC5;
             --secondory-white: {{$settingsData['primary_color']}} !important;
+            --text-contrastColor : #00000
         }
 
     </style>
@@ -80,6 +81,7 @@
             var contrastColor = getContrastColor(headerColor);
             // Set the text color to the contrast color
             $("header *").css("color", contrastColor);
+            $(':root').css('--text-contrastColor', contrastColor);
 
         });
 

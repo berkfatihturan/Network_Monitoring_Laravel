@@ -39,12 +39,13 @@ class AdminSettingsController extends Controller
     {
         $data = new Settings();
         $data->company_name = $request->company_name;
-        $data->logo = $request->logo;
-        $data->description = $request->description;
-        $data->permission_to_mail = $request->permission_to_mail;
-        $data->address = $request->address;
-        $data->phone = $request->phone;
-        $data->email = $request->email;
+        if ($request->file('logo')){
+            $data->logo = $request->file('logo')->store('images');
+        }
+
+        $data->from_email_address = $request->from_email_address;
+        $data->mail_app_password = $request->mail_app_password;
+
         $data->primary_color = $request->primary_color;
         $data->secondary_color = $request->secondary_color;
 
@@ -81,12 +82,12 @@ class AdminSettingsController extends Controller
         }
 
         $data->company_name = $request->company_name;
-        $data->logo = $request->logo;
-        $data->description = $request->description;
-        $data->permission_to_mail = $request->permission_to_mail;
-        $data->address = $request->address;
-        $data->phone = $request->phone;
-        $data->email = $request->email;
+        if ($request->file('logo')){
+            $data->logo = $request->file('logo')->store('images');
+        }
+        $data->from_email_address = $request->from_email_address;
+        $data->mail_app_password = $request->mail_app_password;
+
         $data->primary_color = $request->primary_color;
         $data->secondary_color = $request->secondary_color;
 

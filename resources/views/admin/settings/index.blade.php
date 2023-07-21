@@ -10,7 +10,7 @@
 @section('content')
 
     <div class="section_header">
-        <h1 id="admin_section_title">SETTINGS1</h1>
+        <h1 id="admin_section_title">SETTINGS</h1>
 
     </div>
 
@@ -24,22 +24,12 @@
         <label for="logo">Logo:</label><br>
         <input type="file" name="logo"><br><br>
 
-        <label for="description">Description:</label><br>
-        <input type="text" name="description" value="{{$settingsData['description']}}"><br><br>
-
-        <label for="permission_to_mail"> Permission to Mail:</label>
-        <input type="checkbox" name="permission_to_mail" value="1"
-               @if($settingsData['permission_to_mail']) checked @endif>
-        <br>
-
-        <label for="address">Address:</label><br>
-        <input type="text" name="address" value="{{$settingsData['address']}}"><br><br>
-
-        <label for="phone">Phone:</label><br>
-        <input type="text" name="phone" value="{{$settingsData['phone']}}"><br><br>
 
         <label for="email">Email:</label><br>
-        <input type="text" name="email" value="{{$settingsData['email']}}"><br><br>
+        <input type="text" name="from_email_address" value="{{$settingsData['from_email_address']}}"><br><br>
+
+        <label for="phone">App Password:</label><br>
+        <input type="text" name="mail_app_password" value="{{$settingsData['mail_app_password']}}"><br><br>
 
         <label for="primary_color">Primary color:</label><br>
         <input type="color" name="primary_color" value="{{$settingsData['primary_color']}}"><br><br>

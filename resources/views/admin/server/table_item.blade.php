@@ -2,7 +2,8 @@
 <div class="table-data">{{$item->server_name}}</div>
 <div class="table-data">{{$item->ip}}</div>
 <div class="table-data temp">0°C</div>
-<div class="table-data status"><span class="status-info" style="display: none">{{$item->status}}</span>@if($item->status)
+<div class="table-data status"><span class="status-info"
+                                     style="display: none">{{$item->status}}</span>@if($item->status)
         <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem; content: 'out'"></i>
     @else
         <span class="btn btn-danger" style="font-weight: 600; font-size: 0.9rem; padding: 5px">OUT OF SERVER</span>

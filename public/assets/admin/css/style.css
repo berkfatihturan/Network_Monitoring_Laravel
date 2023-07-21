@@ -341,12 +341,17 @@ main{
     width: 100%;
     text-align: center;
     padding-block: 1px !important;
-    background: rgb(var(--light-rgb),0.4);
+    background: rgb(70, 68, 69,0.2) !important;
 }
 
 .table-item-bottom:hover{
     cursor: pointer;
-    background: rgb(var(--light-rgb),1) !important;
+    background: var( --secondory-white) !important;
+}
+
+.table-item-bottom:hover a,
+.table-item-bottom:hover i{
+    color: var(--text-contrastColor)
 }
 
 
