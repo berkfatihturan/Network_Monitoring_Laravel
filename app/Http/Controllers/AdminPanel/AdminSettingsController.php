@@ -92,8 +92,6 @@ class AdminSettingsController extends Controller
         $updatedEnvContent = preg_replace('/MAIL_FROM_ADDRESS=([^\n]+)/', 'MAIL_FROM_ADDRESS=' .'"' .$fromMail.'"', $envContent);
         File::put($envFilePath, $updatedEnvContent);
 
-        exec('pkill -f "php artisan schedule:work"');
-        exec('php artisan schedule:work');
     }
 
     public function update(Request $request)
