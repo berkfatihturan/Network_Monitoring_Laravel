@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield("title")</title>
-    @yield('head')
+    <title><?php echo $__env->yieldContent("title"); ?></title>
+    <?php echo $__env->yieldContent('head'); ?>
 
     <script src="https://kit.fontawesome.com/d9aa960ef9.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{asset('assets')}}/admin/css/style.css"/>
-    <link rel="stylesheet" href="{{asset('assets')}}/admin/css/style600mx.css"/>
+    <link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/admin/css/style.css"/>
+    <link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/admin/css/style600mx.css"/>
 
     <style>
 
@@ -21,9 +21,9 @@
             --primary: #001C30;
             --secondory: #176B87;
             --light: #64CCC5;
-            --secondory-white: {{$settingsData['primary_color']}} !important;
+            --secondory-white: <?php echo e($settingsData['primary_color']); ?> !important;
             --text-contrastColor : #00000;
-            --sidebar-background_color: {{$settingsData['secondary_color']}} !important;
+            --sidebar-background_color: <?php echo e($settingsData['secondary_color']); ?> !important;
             --sidebar-text_color: #00000;
         }
 
@@ -32,14 +32,14 @@
 </head>
 
 <body>
-    @include("admin.header")
+    <?php echo $__env->make("admin.header", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    @include("admin.sidebar")
+    <?php echo $__env->make("admin.sidebar", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <main>
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
     </main>
 
-    @include("admin.footer")
+    <?php echo $__env->make("admin.footer", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -55,7 +55,7 @@
 
 
 
-    @yield('foot')
+    <?php echo $__env->yieldContent('foot'); ?>
 
 
 
@@ -79,12 +79,12 @@
                 // Return black (#000000) for lighter colors, and white (#ffffff) for darker colors
                 return luminance > 0.5 ? '#000000' : '#ffffff';
             }
-            var headerColor = "{{$settingsData['primary_color']}}";
+            var headerColor = "<?php echo e($settingsData['primary_color']); ?>";
             var contrastColor = getContrastColor(headerColor);
             // Set the text color to the contrast color
             $("header *").css("color", contrastColor);
 
-            var boxColor = "{{$settingsData['secondary_color']}}";
+            var boxColor = "<?php echo e($settingsData['secondary_color']); ?>";
             var contrastBoxColor = getContrastColor(boxColor);
             $(':root').css('--text-contrastColor', contrastBoxColor);
 
@@ -93,7 +93,8 @@
         });
 
     </script>
-    <script src="{{asset('assets')}}/admin/js/script.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/admin/js/script.js"></script>
 
 </body>
 
+<?php /**PATH D:\BFT\Project\Laravel\project_x\resources\views/layouts/adminbase.blade.php ENDPATH**/ ?>

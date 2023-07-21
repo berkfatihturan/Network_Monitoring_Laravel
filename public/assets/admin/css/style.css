@@ -14,7 +14,7 @@
     --title-text_color: black;
     --sidebar-text_color: black;
 
-    --sidebar-background_color: red;
+    --sidebar-background_color: green;
 }
 
 * {
@@ -134,15 +134,16 @@ header *{
     font-size: 1.4rem;
     padding: 10px;
     margin-bottom: 5px;
-    color: var(--sidebar-text_color) !important;
+    color: black;
     border-radius: 10px;
     margin-right: 10px;
     cursor: pointer;
 }
 
 .sidebar-list__item:hover{
-    background-color: var(--light);
+    background-color: var(--sidebar-background_color);
     border-radius: 10px;
+    color: var(--text-contrastColor) !important;
 }
 
 .sidebar-list__button{
@@ -346,7 +347,7 @@ main{
 
 .table-item-bottom:hover{
     cursor: pointer;
-    background: var( --secondory-white) !important;
+    background: var(--sidebar-background_color) !important;
 }
 
 .table-item-bottom:hover a,

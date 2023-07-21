@@ -1,8 +1,7 @@
 <header>
     <div class="header-title" onclick="location.href='{{route('admin_index')}}';" style="cursor: pointer">
         @if($settingsData->logo)
-            <img src="{{\Illuminate\Support\Facades\Storage::url($settingsData->logo)}}"
-                 style="object-fit: cover; height: 5vh">
+            <img src="{{\Illuminate\Support\Facades\Storage::url($settingsData->logo)}}" style="object-fit: cover; height: 5vh">
         @else
             <img src="{{asset('assets')}}/admin/img/logo.png" style="object-fit: cover; height: 5vh">
         @endif

@@ -1,8 +1,6 @@
-@extends('layouts.adminbase')
+<?php $__env->startSection('title', 'Admin Panel'); ?>
 
-@section('title', 'Admin Panel')
-
-@section('head')
+<?php $__env->startSection('head'); ?>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
@@ -573,16 +571,16 @@
 
     </style>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="section_header">
         <h1 id="admin_section_title">SETTINGS</h1>
     </div>
 
-    <form action="{{route('admin_settings_update')}}" method="POST" enctype="multipart/form-data">
-        @csrf
+    <form action="<?php echo e(route('admin_settings_update')); ?>" method="POST" enctype="multipart/form-data">
+        <?php echo csrf_field(); ?>
         <div class="form-page">
             <main class="form-page-content">
 
@@ -596,7 +594,7 @@
 
                     <div class="nice-form-group">
                         <label>Company Name</label>
-                        <input type="text" name="company_name" value="{{$settingsData['company_name']}}"/>
+                        <input type="text" name="company_name" value="<?php echo e($settingsData['company_name']); ?>"/>
                     </div>
 
                     <div class="nice-form-group">
@@ -617,13 +615,13 @@
 
                     <div class="nice-form-group">
                         <label>Email</label>
-                        <input type="text" name="from_email_address" value="{{$settingsData['from_email_address']}}"/>
+                        <input type="text" name="from_email_address" value="<?php echo e($settingsData['from_email_address']); ?>"/>
 
                     </div>
 
                     <div class="nice-form-group">
                         <label>Mail Application Key</label>
-                        <input type="text" name="mail_app_password" value="{{$settingsData['mail_app_password']}}"/>
+                        <input type="text" name="mail_app_password" value="<?php echo e($settingsData['mail_app_password']); ?>"/>
                     </div>
                 </section>
 
@@ -638,12 +636,12 @@
 
                     <div class="nice-form-group">
                         <label>Primary color</label>
-                        <input type="color" name="primary_color" value="{{$settingsData['primary_color']}}">
+                        <input type="color" name="primary_color" value="<?php echo e($settingsData['primary_color']); ?>">
                     </div>
 
                     <div class="nice-form-group">
                         <label>Secondary color</label>
-                        <input type="color" name="secondary_color" value="{{$settingsData['secondary_color']}}">
+                        <input type="color" name="secondary_color" value="<?php echo e($settingsData['secondary_color']); ?>">
                     </div>
 
                     <details>
@@ -660,8 +658,10 @@
         </div>
     </form>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('foot')
+<?php $__env->startSection('foot'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.adminbase', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\BFT\Project\Laravel\project_x\resources\views/admin/settings/index.blade.php ENDPATH**/ ?>

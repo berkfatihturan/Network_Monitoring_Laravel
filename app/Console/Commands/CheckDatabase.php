@@ -4,9 +4,12 @@ namespace App\Console\Commands;
 
 use App\Mail\AlertMail;
 use App\Models\Servers;
+use App\Models\Settings;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\File;
 class CheckDatabase extends Command
 {
     /**
@@ -35,7 +38,7 @@ class CheckDatabase extends Command
         // Execute the ping command
         // if on linux > ping -c < use
         // if on windows > ping -n < use
-        exec("ping -c 1 $host", $outcome, $status);
+        exec("ping -n 1 $host", $outcome, $status);
 
         // Check the status code
         if ($status === 0) {
@@ -46,6 +49,8 @@ class CheckDatabase extends Command
             return false;
         }
     }
+
+
 
 
     public function handle()

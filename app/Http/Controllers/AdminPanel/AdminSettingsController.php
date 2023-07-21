@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Settings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AdminSettingsController extends Controller
 {
@@ -72,6 +73,28 @@ class AdminSettingsController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    function updateMailAdress()
+    {
+        $fromMail = Settings::first()->from_email_address;
+        $fromMailPassword = Settings::first()->mail_app_password;
+
+        $envFilePath = base_path('.env');
+
+        $envContent = File::get($envFilePath);
+        $updatedEnvContent = preg_replace('/MAIL_USERNAME=([^\n]+)/', 'MAIL_USERNAME=' . $fromMail, $envContent);
+        File::put($envFilePath, $updatedEnvContent);
+
+        $envContent = File::get($envFilePath);
+        $updatedEnvContent = preg_replace('/MAIL_PASSWORD=([^\n]+)/', 'MAIL_PASSWORD=' . $fromMailPassword, $envContent);
+        File::put($envFilePath, $updatedEnvContent);
+
+        $envContent = File::get($envFilePath);
+        $updatedEnvContent = preg_replace('/MAIL_FROM_ADDRESS=([^\n]+)/', 'MAIL_FROM_ADDRESS=' .'"' .$fromMail.'"', $envContent);
+        File::put($envFilePath, $updatedEnvContent);
+
+        exec('pkill -f "php artisan schedule:work"');
+    }
+
     public function update(Request $request)
     {
         $data = Settings::first();
@@ -83,7 +106,7 @@ class AdminSettingsController extends Controller
 
         $data->company_name = $request->company_name;
         if ($request->file('logo')){
-            $data->logo = $request->file('logo')->store('images');
+            $data->logo=$request->file('logo')->store('images');
         }
         $data->from_email_address = $request->from_email_address;
         $data->mail_app_password = $request->mail_app_password;
@@ -92,6 +115,8 @@ class AdminSettingsController extends Controller
         $data->secondary_color = $request->secondary_color;
 
         $data->save();
+        $this->updateMailAdress();
+
         return redirect('admin/settings');
 
 
