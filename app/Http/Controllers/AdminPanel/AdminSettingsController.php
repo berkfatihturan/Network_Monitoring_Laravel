@@ -93,6 +93,7 @@ class AdminSettingsController extends Controller
         File::put($envFilePath, $updatedEnvContent);
 
         exec('pkill -f "php artisan schedule:work"');
+        exec('php artisan schedule:work');
     }
 
     public function update(Request $request)
