@@ -115,7 +115,7 @@ class AdminSettingsController extends Controller
         $data->mail_app_password = $request->mail_app_password;
 
         $data->primary_color = $request->primary_color;
-        $data->secondary_color = $request->secondary_color;
+        $data->secondary_color = $requests->secondary_color;
 
         $data->save();
 
