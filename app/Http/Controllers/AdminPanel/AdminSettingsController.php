@@ -114,7 +114,8 @@ class AdminSettingsController extends Controller
         $data->secondary_color = $request->secondary_color;
 
         $data->save();
-        $this->updateMailAdress();
+
+
 
         return redirect('admin/settings');
 
