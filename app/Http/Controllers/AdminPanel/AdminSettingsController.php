@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminSettingsController extends Controller
 {
@@ -104,9 +105,12 @@ class AdminSettingsController extends Controller
         }
 
         $data->company_name = $request->company_name;
+
         if ($request->file('logo')){
+            Storage::delete($data->logo);
             $data->logo=$request->file('logo')->store('images');
         }
+
         $data->from_email_address = $request->from_email_address;
         $data->mail_app_password = $request->mail_app_password;
 
