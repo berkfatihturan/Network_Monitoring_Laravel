@@ -54,7 +54,6 @@ class CheckPorts extends Command
             $port = $item->port;
             $response = $this->checkPort($item->server->ip, intval($port));
             if ($response && $item->status) {
-
                 $details['ip'] = $item->port;
                 $details['updated_at'] = now();
                 $mail = new AlertMail($details);
