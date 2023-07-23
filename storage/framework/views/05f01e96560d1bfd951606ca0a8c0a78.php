@@ -4,7 +4,7 @@
         $settingsData = \App\Models\Settings::first();
     ?>
 
-    <?php if($settingsData->logo): ?>
+    <?php if(optional($settingsData)->logo): ?>
         <img src="<?php echo e(\Illuminate\Support\Facades\Storage::url($settingsData->logo)); ?>"
              style="object-fit: cover; height: 8vh;margin-bottom: 10px">
     <?php else: ?>
