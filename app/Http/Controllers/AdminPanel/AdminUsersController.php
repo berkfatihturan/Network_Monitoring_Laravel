@@ -87,6 +87,9 @@ class AdminUsersController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = User::find($id);
+        $data->delete();
+
+        return redirect(route('admin_users_index'));
     }
 }
