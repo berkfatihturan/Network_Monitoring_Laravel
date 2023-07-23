@@ -1,14 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700");
 
 :root {
     --primary: #001C30;
-    --primary-rgb: 0,28,48;
+    --primary-rgb: 0, 28, 48;
 
     --secondory: #176B87;
     --secondory-white: #64CCC5;
 
     --light: #64CCC5;
-    --light-rgb: 100,204,197;
+    --light-rgb: 100, 204, 197;
 
     --content-text_color: black;
     --title-text_color: black;
@@ -29,9 +28,8 @@
 }
 
 body {
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: Figtree, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
     margin: 0;
-
 }
 
 h1,
@@ -40,8 +38,9 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
+    margin: 0 !important;
 }
+
 /* header -start- */
 header {
     width: 100%;
@@ -54,8 +53,8 @@ header {
     z-index: 1;
 }
 
-header *{
-    color: var(--title-text_color) ;
+header * {
+    color: var(--title-text_color);
 }
 
 .header-title {
@@ -82,24 +81,25 @@ header *{
 
 .user-info {
     position: absolute;
-    top:9px;
+    top: 9px;
     right: 50px;
     display: inline-block;
 
 }
-.user-info .dropdown-toggle{
+
+.user-info .dropdown-toggle {
     background: transparent;
     border: none;
-    margin: 1;
+    margin: 0;
     padding: 0;
     font-size: 1.4rem;
 }
 
-.user-info .dropdown-toggle:focus{
-   box-shadow: none;
+.user-info .dropdown-toggle:focus {
+    box-shadow: none;
 }
 
-.user-info .dropdown-menu{
+.user-info .dropdown-menu {
     background: black;
 }
 
@@ -109,6 +109,7 @@ header *{
     width: 50px;
     border: 1px solid black;
 }
+
 /* header -end- */
 
 /* -sidebar -start-*/
@@ -122,14 +123,14 @@ header *{
 
 }
 
-.sidebar-list{
+.sidebar-list {
     padding-left: 10px;
     padding-top: 20px;
     width: 100%;
     list-style: none;
 }
 
-.sidebar-list__item{
+.sidebar-list__item {
     display: block;
     font-size: 1.4rem;
     padding: 10px;
@@ -140,19 +141,19 @@ header *{
     cursor: pointer;
 }
 
-.sidebar-list__item:hover{
+.sidebar-list__item:hover {
     background-color: var(--sidebar-background_color);
     border-radius: 10px;
     color: var(--text-contrastColor) !important;
 }
 
-.sidebar-list__button{
-   display: none;
+.sidebar-list__button {
+    display: none;
 }
 
 
-.fa-angle-right{
-    color: rgb(0,0,0,0.5);
+.fa-angle-right {
+    color: rgb(0, 0, 0, 0.5);
     font-size: 1.2rem;
 }
 
@@ -162,19 +163,19 @@ header *{
 
 /* main -start- */
 
-main{
+main {
     margin-left: 15%;
     margin-top: 30px;
     width: 82%;
 }
 
-.section_header{
+.section_header {
     border-bottom: 5px solid var(--secondory);
     margin-bottom: 10px;
 
 }
 
-#admin_section_title{
+#admin_section_title {
     display: inline-block;
     letter-spacing: 2px;
     font-weight: 500;
@@ -182,7 +183,7 @@ main{
     color: var(--title-text_color) !important;
 }
 
-.addButton{
+.addButton {
     width: 80px;
     background-color: var(--secondory-white);
     color: white;
@@ -190,18 +191,18 @@ main{
     font-weight: 500;
 }
 
-#collapseForm{
+#collapseForm {
 
     margin-bottom: 10px !important;
 }
 
-#collapseForm label{
+#collapseForm label {
     color: #000 !important;
 }
 
 #collapseForm input,
 #collapseForm select,
-#collapseForm select option{
+#collapseForm select option {
     color: black;
     width: 100%;
 }
@@ -214,10 +215,14 @@ main{
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: var(--light);
+    background-color: var(--sidebar-background_color);
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     z-index: 9999;
+}
+
+#updateForm  * {
+    color: var(--text-contrastColor) ;
 }
 
 #updateForm p {
@@ -234,8 +239,7 @@ main{
     cursor: pointer;
 }
 
-#updateForm a:hover i{
-
+#updateForm a:hover i {
     color: red;
 }
 
@@ -243,9 +247,13 @@ main{
     margin-block: 5px;
 }
 
+#updateForm [type="submit"] {
+    color: red;
+}
+
 #updateForm input,
 #updateForm select,
-#updateForm select option{
+#updateForm select option {
     color: black;
     width: 100%;
 }
@@ -263,7 +271,7 @@ main{
 
 .blur header,
 .blur #sidebar,
-.blur .table-row{
+.blur .table-row {
     z-index: -1 !important;
 
 }
@@ -279,7 +287,8 @@ main{
 
 
 }
-.table-content{
+
+.table-content {
     padding-right: 10px;
     height: 70vh;
     overflow: auto;
@@ -302,7 +311,6 @@ main{
 }
 
 
-
 .table-header {
     display: flex;
     width: 100%;
@@ -315,15 +323,15 @@ main{
     display: flex;
     width: 100%;
     padding: 18px 0 30px 0;
-    margin: 20px 0 ;
+    margin: 20px 0;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.table-data{
+.table-data {
     color: black;
 }
 
-.table-row [id^="collapseItem"]{
+.table-row [id^="collapseItem"] {
     position: absolute;
     top: 60px;
     width: 100%;
@@ -332,26 +340,26 @@ main{
 
 }
 
-.table-content .out-of-servis{
-    background: rgb(255, 59, 61,0.25) !important;
+.table-content .out-of-servis {
+    background: rgb(255, 59, 61, 0.25) !important;
 }
 
-.table-item-bottom{
+.table-item-bottom {
     position: absolute;
     bottom: 0;
     width: 100%;
     text-align: center;
     padding-block: 1px !important;
-    background: rgb(70, 68, 69,0.2) !important;
+    background: rgb(70, 68, 69, 0.2) !important;
 }
 
-.table-item-bottom:hover{
+.table-item-bottom:hover {
     cursor: pointer;
     background: var(--sidebar-background_color) !important;
 }
 
 .table-item-bottom:hover a,
-.table-item-bottom:hover i{
+.table-item-bottom:hover i {
     color: var(--text-contrastColor)
 }
 
@@ -367,24 +375,24 @@ main{
 }
 
 .table-header .id,
-.table-content .id{
+.table-content .id {
     flex: 1 1 10% !important;
 }
 
 .table-header .temp,
-.table-content .temp{
+.table-content .temp {
     flex: 1 1 10% !important;
 }
 
 .table-header .status,
-.table-content .status{
+.table-content .status {
     flex: 1 1 15% !important;
 }
 
-.table-item i{
+.table-item i {
     position: relative;
-    top:-5px;
-    color: #1a202c!important;
+    top: -5px;
+    color: #1a202c !important;
     padding: 5px;
     margin-inline: 2px;
     font-size: 1.5rem;
@@ -392,9 +400,9 @@ main{
     border-radius: 5px;
 }
 
-.table-item:hover i{
+.table-item:hover i {
     cursor: pointer;
-    background: rgb(128, 128, 128,0.2);
+    background: rgb(128, 128, 128, 0.2);
     color: red;
 }
 
@@ -411,6 +419,7 @@ main{
     padding-left: 24px;
     padding-right: 24px;
 }
+
 .filter__link::after {
     content: "";
     position: absolute;
@@ -420,9 +429,11 @@ main{
     top: 50%;
     transform: translateY(-50%);
 }
+
 .filter__link.desc::after {
     content: "(desc)";
 }
+
 .filter__link.asc::after {
     content: "(asc)";
 }
