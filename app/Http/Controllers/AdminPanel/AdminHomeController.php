@@ -52,6 +52,12 @@ class AdminHomeController extends Controller
             $userPermission->save();
         }
 
+        $settingsData = Settings::first();
+        if($settingsData==null){
+            $settingsData = new Settings();
+            $settingsData->save();
+        }
+
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->intended('/admin');
