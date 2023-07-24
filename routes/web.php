@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminPanel\AdminPortsController as AdminPortsController
 use App\Http\Controllers\AdminPanel\AdminSettingsController as AdminSettingController;
 use App\Http\Controllers\AdminPanel\AdminProfileController as AdminProfileController;
 use App\Http\Controllers\AdminPanel\AdminUsersController as AdminUsersController;
+use App\Http\Controllers\AdminPanel\AdminDevicesController as AdminDevicesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,15 @@ Route::middleware(['admin'])->prefix('admin')->name("admin_")->group(function ()
 
     /* Admin Ports Panel Routes*/
     Route::prefix('/ports')->name("ports_")->controller(AdminPortsController::class)->group(function (){
+        Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+        Route::post('/update', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::get('/reload/{id_item}/{is_open}', 'reloadPage')->name('reloadPage');
+    });
+
+    /* Admin Settings Panel Routes*/
+    Route::prefix('/devices')->name("devices_")->controller(AdminDevicesController::class)->group(function (){
         Route::get('/', 'index')->name('index');
         Route::post('/store', 'store')->name('store');
         Route::post('/update', 'update')->name('update');
