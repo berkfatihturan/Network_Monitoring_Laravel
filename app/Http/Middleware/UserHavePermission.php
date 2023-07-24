@@ -26,8 +26,8 @@ class UserHavePermission
         $user = optional(Auth::user()->user_login_permission)->is_allowed;
 
         if (!$user){
-            Auth::logout();
-            return redirect(route('login'))->withErrors(['error'=>'You do not have permission']);
+            //Auth::logout();
+            return redirect(route('dashboard'))->withErrors(['error'=>'You do not have permission']);
         }
 
         return $next($request);

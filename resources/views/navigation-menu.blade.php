@@ -11,12 +11,28 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <div class="hidden space-x-8 sm:-my-px sm:flex" style="margin-inline: 10px;">
+                    <x-nav-link href="{{ route('admin_index') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:flex" style="margin-inline: 10px;">
+                    <x-nav-link href="{{ route('admin_index') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Admin Panel') }}
+                    </x-nav-link>
+                </div>
+
+                @error('error')
+                <div class="form-group input-group" style="position: relative; top: 15px">
+                    <div class="alert alert-danger" style="margin: 5px 0; text-align: center; color:red">
+                        <strong>{{$message}}</strong>
+                    </div>
+                </div>
+                @enderror
+
             </div>
+
+
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
