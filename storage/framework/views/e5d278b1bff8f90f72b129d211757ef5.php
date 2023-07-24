@@ -74,7 +74,7 @@
         <h1 id="admin_section_title">DEVİCES</h1>
     </div>
 
-    
+
     <div class="table-form-box">
         <table id="users">
             <tr>

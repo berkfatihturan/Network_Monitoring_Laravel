@@ -12,6 +12,7 @@
             <?php echo e(__('Dashboard')); ?>
 
         </h2>
+
      <?php $__env->endSlot(); ?>
 
     <div class="py-12">
