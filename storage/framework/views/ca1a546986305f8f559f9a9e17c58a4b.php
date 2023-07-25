@@ -1,5 +1,5 @@
 <div class="table-data id"><?php echo e($item->id); ?></div>
-<div class="table-data"><?php echo e($item->server->ip); ?></div>
+<div class="table-data"><?php echo e(optional($item->server)->ip); ?></div>
 <div class="table-data"><?php echo e($item->port_name); ?></div>
 <div class="table-data"><?php echo e($item->port); ?></div>
 <div class="table-data status"><?php if($item->status): ?>

@@ -1,5 +1,5 @@
 <div class="table-data id">{{$item->id}}</div>
-<div class="table-data">{{$item->server->ip}}</div>
+<div class="table-data">{{optional($item->server)->ip}}</div>
 <div class="table-data">{{$item->port_name}}</div>
 <div class="table-data">{{$item->port}}</div>
 <div class="table-data status">@if($item->status)
