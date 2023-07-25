@@ -91,7 +91,7 @@ class CheckDatabase extends Command
 
                 $details['ip'] = $item->ip;
                 // send mail to all users
-                $this->sendMailtoUsers($details);
+                //$this->sendMailtoUsers($details);
 
             }
 
