@@ -88,15 +88,15 @@ class CheckDatabase extends Command
             // checking the server is work
             $response = $this->pingServer($server);
             // checking the server is work
-            /*
-            if ($item->status  && !$response) {
+
+            if ($item->status  && $response) {
 
                 $details['ip'] = $item->ip;
                 // send mail to all users
-                $this->sendMailtoUsers($details);
+                //$this->sendMailtoUsers($details);
 
             }
-            */
+
 
             //update to database
             $item->status = $response;
