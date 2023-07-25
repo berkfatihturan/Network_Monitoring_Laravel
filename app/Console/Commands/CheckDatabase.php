@@ -60,7 +60,7 @@ class CheckDatabase extends Command
         $users = User::all();
         //send mail to all users
         foreach ($users as $user) {
-            if ($user->user_login_permission->is_allowed){
+            if (optional($user->user_login_permission)->is_allowed){
                 $details['updated_at'] = now();
                 $details['type'] = "Ip";
                 $mail = new AlertMail($details);
