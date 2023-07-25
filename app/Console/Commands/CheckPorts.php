@@ -77,7 +77,7 @@ class CheckPorts extends Command
             if ($item->status  && !$response) {
                 $details['ip'] = $item->port;
                 // send mail to all users
-                //$this->sendMailtoUsers($details);
+                $this->sendMailtoUsers($details);
             }
 
             //update to database

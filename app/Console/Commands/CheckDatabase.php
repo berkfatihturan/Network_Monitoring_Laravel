@@ -58,6 +58,7 @@ class CheckDatabase extends Command
     {
         //getting all users on database
         $users = User::all();
+
         //send mail to all users
         foreach ($users as $user) {
             if (optional($user->user_login_permission)->is_allowed){
@@ -91,7 +92,7 @@ class CheckDatabase extends Command
 
                 $details['ip'] = $item->ip;
                 // send mail to all users
-                //$this->sendMailtoUsers($details);
+                $this->sendMailtoUsers($details);
 
             }
 
