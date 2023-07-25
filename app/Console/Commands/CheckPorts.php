@@ -35,9 +35,8 @@ class CheckPorts extends Command
         $connection = @fsockopen($host, $port);
 
         if (is_resource($connection)) {
-            return true;
             fclose($connection);
-
+            return true;
         } else {
             return false;;
         }
