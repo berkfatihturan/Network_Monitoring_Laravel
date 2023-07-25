@@ -68,17 +68,19 @@ class CheckPorts extends Command
         //getting all port on database
         $portData = Ports::all();
 
+
         foreach ($portData as $item) {
             $port = $item->port;
             // checking the ports is work
             $response = $this->checkPort($item->server->ip, intval($port));
             // checking status true -> false
+             /*
             if ($item->status  && !$response) {
                 $details['ip'] = $item->port;
                 // send mail to all users
                 $this->sendMailtoUsers($details);
             }
-
+            */
             //update to database
             $item->status = $response;
             $item->updated_at = now();

@@ -9,7 +9,7 @@
             var dugmeOffset = $(ths).offset();
             $("#updateForm").css({
                 top: dugmeOffset.top + "px",
-                left: (dugmeOffset.left-130) + "px"
+                left: (dugmeOffset.left - 130) + "px"
             });
 
             $("#updateForm").find('input[name="id"]').val(id);
@@ -35,7 +35,8 @@
 
     <div class="section_header">
         <h1 id="admin_section_title">SERVERS</h1>
-        <a class="btn btn-info addButton" onclick="toggleCollapse()"> <i class="fa-solid fa-plus" style="color: white"></i> ADD
+        <a class="btn btn-info addButton" onclick="toggleCollapse()"> <i class="fa-solid fa-plus"
+                                                                         style="color: white"></i> ADD
         </a>
     </div>
 
@@ -45,16 +46,25 @@
             <div class="col-lg-3 col-sm-12">
                 <label for="fname">Server Name:</label><br>
                 <input type="text" name="server_name"><br>
+
             </div>
             <div class="col-lg-3 col-sm-12">
                 <label for="lname">Ip:</label><br>
                 <input type="text" name="ip"><br><br>
             </div>
-            <div class="col-lg-3 col-sm-12">
+
+            <div>
+                <p style="margin-bottom: 5px"><label for="w3review">Details:</label></p>
+                <textarea id="w3review" name="w3review" rows="4" style="width:80vw">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+            </div>
+            
+            <div class="col-lg-2 col-sm-12">
                 <input type="submit" value="Submit"
                        style="background-color: black; color: white; padding: 10px; border-radius: 10px; margin-top: 10px;">
             </div>
+            </hr>
         </form>
+
     </div>
 
 
@@ -63,7 +73,8 @@
             <div class="header__item id"><a id="name" class="filter__link" href="#">Id</a></div>
             <div class="header__item"><a id="name" class="filter__link" href="#">Name</a></div>
             <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">IP</a></div>
-            <div class="header__item temp"><a id="wins" class="filter__link filter__link--number" href="#">Temp</a></div>
+            <div class="header__item temp"><a id="wins" class="filter__link filter__link--number" href="#">Temp</a>
+            </div>
             <div class="header__item status"><a id="draws" class="filter__link filter__link--number" href="#">Status</a>
             </div>
             <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Update Date</a>

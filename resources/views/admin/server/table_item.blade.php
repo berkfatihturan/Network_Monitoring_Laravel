@@ -20,5 +20,19 @@
         Detail</a></div>
 <div class="server_detail_text" id="collapseItem-{{$item->id}}" style="display: {{$display_status}};">
     <hr/>
-    d*wüojqfqwofuqwjüofjq9op
+    <div class="row" style="margin: 20px;">
+        <div class="col-lg-1 col-sm-12" style="font-size: 1.4rem; font-weight: 600">Notes:</div>
+        <div class="col-lg-10 col-sm-12" style="padding-top: 8px">DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to
+            dynamically assign an IP address to any device, or node, on a network so it can communicate using IP.DHCP
+            (Dynamic Host Configuration Protocol) is a network management protocol used to dynamically assign an IP
+            address to any device, or node, on a network so it can communicate using IP.DHCP (Dynamic Host Configuration
+            Protocol) is a network management protocol used to dynamically assign an IP address to any device, or node,
+            on a network so it can communicate using IP.DHCP (Dynamic Host Configuration Protocol) is a network
+            management protocol used to dynamically assign an IP address to any device, or node, on a network so it can
+            communicate using IP.DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to
+            dynamically assign an IP address to any device, or node, on a network so it can communicate using IP.DHCP
+            (Dynamic Host Configuration Protocol) is a network management protocol used to dynamically assign an IP
+            address to any device, or node, on a network so it can communicate using IP.
+        </div>
+    </div>
 </div>
