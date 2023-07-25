@@ -22,6 +22,8 @@ class AdminUsersController extends Controller
             'settingsData' => $settingsData,
             'userData' =>$userData
         ]);
+
+
     }
 
     /**

@@ -13,12 +13,15 @@ class AlertMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $details;
+    public $settings;
     /**
      * Create a new message instance.
      */
     public function __construct($details)
     {
         $this->details = $details;
+        $this->settings = \App\Models\Settings::first();
+        $this->details['logo'] = public_path('/assets/admin/img/logo.png');
     }
 
     /**

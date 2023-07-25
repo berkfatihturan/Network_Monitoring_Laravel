@@ -5,11 +5,14 @@ namespace App\Console\Commands;
 use App\Mail\AlertMail;
 use App\Models\Servers;
 use App\Models\Settings;
+use App\Models\User;
+use App\Models\user_login_permission;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
+
 class CheckDatabase extends Command
 {
     /**
@@ -29,7 +32,7 @@ class CheckDatabase extends Command
     /**
      * Execute the console command.
      */
-
+    //return true if server work
     function pingServer($host)
     {
         $outcome = null;
@@ -38,7 +41,7 @@ class CheckDatabase extends Command
         // Execute the ping command
         // if on linux > ping -c < use
         // if on windows > ping -n < use
-        exec("ping -c 1 $host", $outcome, $status);
+        exec("ping -n 1 $host", $outcome, $status);
 
         // Check the status code
         if ($status === 0) {
@@ -51,6 +54,22 @@ class CheckDatabase extends Command
     }
 
 
+    function sendMailtoUsers($details)
+    {
+        //getting all users on database
+        $users = User::all();
+        //send mail to all users
+        foreach ($users as $user) {
+            if ($user->user_login_permission->is_allowed){
+                $details['updated_at'] = now();
+                $details['type'] = "Ip";
+                $mail = new AlertMail($details);
+                // send mail
+                Mail::to($user->email)->send($mail);
+            }
+
+        }
+    }
 
 
     public function handle()
@@ -60,21 +79,23 @@ class CheckDatabase extends Command
             'updated_at' => ''
         ];
 
+        //getting all server on database
         $serverData = Servers::all();
 
         foreach ($serverData as $item) {
             $server = $item->ip;
+            // checking the server is work
             $response = $this->pingServer($server);
-
-            if ($response && $item->status) {
+            // checking the server is work
+            if ($item->status  && !$response) {
 
                 $details['ip'] = $item->ip;
-                $details['updated_at'] = now();
-                $mail = new AlertMail($details);
-                Mail::to('bft_@outlook.com')->send($mail);
+                // send mail to all users
+                $this->sendMailtoUsers($details);
 
             }
 
+            //update to database
             $item->status = $response;
             $item->updated_at = now();
             $item->save();

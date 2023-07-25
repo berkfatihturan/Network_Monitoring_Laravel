@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Mail\AlertMail;
 use App\Models\Ports;
 use App\Models\Servers;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
@@ -28,6 +29,7 @@ class CheckPorts extends Command
      * Execute the console command.
      */
 
+    //return true if port work
     function checkPort($host, $port)
     {
         $connection = @fsockopen($host, $port);
@@ -41,6 +43,22 @@ class CheckPorts extends Command
         }
     }
 
+    function sendMailtoUsers($details)
+    {
+        //getting all users on database
+        $users = User::all();
+        //send mail to all users
+        foreach ($users as $user) {
+            if ($user->user_login_permission->is_allowed) {
+                $details['updated_at'] = now();
+                $details['type'] = "Port";
+                $mail = new AlertMail($details);
+                // send mail
+                Mail::to($user->email)->send($mail);
+            }
+        }
+    }
+
     public function handle()
     {
         $details = [
@@ -48,18 +66,21 @@ class CheckPorts extends Command
             'updated_at' => ''
         ];
 
+        //getting all port on database
         $portData = Ports::all();
 
         foreach ($portData as $item) {
             $port = $item->port;
+            // checking the ports is work
             $response = $this->checkPort($item->server->ip, intval($port));
-            if ($response && $item->status) {
+            // checking status true -> false
+            if ($item->status  && !$response) {
                 $details['ip'] = $item->port;
-                $details['updated_at'] = now();
-                $mail = new AlertMail($details);
-                Mail::to('bft_@outlook.com')->send($mail);
+                // send mail to all users
+                $this->sendMailtoUsers($details);
             }
 
+            //update to database
             $item->status = $response;
             $item->updated_at = now();
             $item->save();

@@ -52,6 +52,13 @@ class AdminHomeController extends Controller
             $userPermission->save();
         }
 
+        if(user_login_permission::first()==null){
+            $adminUser = new user_login_permission();
+            $adminUser->user_id = User::first()->id;
+            $adminUser->is_allowed = true;
+            $adminUser->save();
+        }
+
         $settingsData = Settings::first();
         if($settingsData==null){
             $settingsData = new Settings();
