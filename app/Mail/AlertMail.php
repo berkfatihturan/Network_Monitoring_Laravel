@@ -21,7 +21,7 @@ class AlertMail extends Mailable
     {
         $this->details = $details;
         $this->settings = \App\Models\Settings::first();
-        $this->details['logo'] = public_path('/assets/admin/img/logo.png');
+
     }
 
     /**
