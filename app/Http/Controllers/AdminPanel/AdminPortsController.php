@@ -102,6 +102,9 @@ class AdminPortsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Ports::find($id);
+        $data->delete();
+
+        return redirect(route('admin_ports_index'));
     }
 }
