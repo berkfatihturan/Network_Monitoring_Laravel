@@ -47,8 +47,7 @@ class CheckPorts extends Command
     {
         //getting all users on database
         $users = User::all();
-        $details['updated_at'] = now();
-        $details['type'] = "Port";
+
 
         //send mail to all users
         foreach ($users as $user) {
@@ -84,6 +83,8 @@ class CheckPorts extends Command
 
             if ($item->status && $response) {
                 $details['ip'] = $item->port;
+                $details['updated_at'] = now();
+                $details['type'] = "Port";
                 // send mail to all users
                 $this->sendMailtoUsers($details);
             }

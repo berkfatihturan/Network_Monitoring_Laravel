@@ -59,20 +59,18 @@ class CheckDatabase extends Command
     {
         //getting all users on database
         $users = User::all();
-        $details['updated_at'] = now();
-        $details['type'] = "Ip";
+
 
         //send mail to all users
         foreach ($users as $user) {
-            if (optional($user->user_login_permission)->is_allowed){
+            if (optional($user->user_login_permission)->is_allowed) {
                 try {
                     // send mail
                     $mail = new AlertMail($details);
                     Mail::to($user->email)->send($mail);
-                }catch(Exception $e){
+                } catch (Exception $e) {
                     print "something went wrong\n";
                 }
-
             }
 
         }
@@ -95,11 +93,13 @@ class CheckDatabase extends Command
             $response = $this->pingServer($server);
             // checking the server is work
 
-            if ($item->status  && $response) {
+            if ($item->status && $response) {
 
                 $details['ip'] = $item->ip;
+                $details['updated_at'] = now();
+                $details['type'] = "Ip";
                 // send mail to all users
-               $this->sendMailtoUsers($details);
+                $this->sendMailtoUsers($details);
 
             }
 
