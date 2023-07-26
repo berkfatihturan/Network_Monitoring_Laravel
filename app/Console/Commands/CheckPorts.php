@@ -48,10 +48,9 @@ class CheckPorts extends Command
         //getting all users on database
         $users = User::all();
 
-
         //send mail to all users
         foreach ($users as $user) {
-            if (optional($user->user_login_permission)->is_allowed) {
+            //if (optional($user->user_login_permission)->is_allowed) {
 
                 try {
                     // send mail
@@ -60,7 +59,7 @@ class CheckPorts extends Command
                 } catch (Exception $e) {
                     print "something went wrong\n";
                 }
-            }
+            //}
         }
     }
 
@@ -86,7 +85,7 @@ class CheckPorts extends Command
                 $details['updated_at'] = now();
                 $details['type'] = "Port";
                 // send mail to all users
-                //$this->sendMailtoUsers($details);
+                $this->sendMailtoUsers($details);
             }
 
             //update to database
