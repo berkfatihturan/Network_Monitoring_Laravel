@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use MongoDB\Driver\Exception\Exception;
+use Throwable;
 
 class CheckPorts extends Command
 {
@@ -31,7 +32,7 @@ class CheckPorts extends Command
      */
 
     //return true if port work
-    function checkPort($host, $port): bool
+    function checkPort($host, $port)
     {
         $connection = @fsockopen($host, $port);
 
@@ -52,10 +53,14 @@ class CheckPorts extends Command
         foreach ($users as $user) {
             //if (optional($user->user_login_permission)->is_allowed) {
 
+            try {
+                $mail = new AlertMail($details);
+                Mail::to($user->email)->send($mail);
+            }catch (Throwable $e) {
 
+            }
             // send mail
-            $mail = new AlertMail($details);
-            Mail::to($user->email)->send($mail);
+
 
 
 

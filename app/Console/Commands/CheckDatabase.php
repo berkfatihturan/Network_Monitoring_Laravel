@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
 use MongoDB\Driver\Exception\Exception;
+use Throwable;
 
 class CheckDatabase extends Command
 {
@@ -65,9 +66,12 @@ class CheckDatabase extends Command
             //if (optional($user->user_login_permission)->is_allowed) {
 
             // send mail
-            $mail = new AlertMail($details);
-            Mail::to($user->email)->send($mail);
+            try {
+                $mail = new AlertMail($details);
+                Mail::to($user->email)->send($mail);
+            }catch (Throwable $e) {
 
+            }
 
 
             //}
