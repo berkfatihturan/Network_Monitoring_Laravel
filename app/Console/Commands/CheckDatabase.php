@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
+use MongoDB\Driver\Exception\Exception;
 
 class CheckDatabase extends Command
 {
@@ -66,7 +67,12 @@ class CheckDatabase extends Command
                 $details['type'] = "Ip";
                 $mail = new AlertMail($details);
                 // send mail
-                Mail::to($user->email)->send($mail);
+                try {
+                    Mail::to($user->email)->send($mail);
+                }catch(Exception $e){
+                    print "something went wrong\n";
+                }
+
             }
 
         }
