@@ -57,7 +57,7 @@ class CheckPorts extends Command
                 $mail = new AlertMail($details);
                 Mail::to($user->email)->send($mail);
             }catch (Throwable $e) {
-
+                print($e);
             }
             // send mail
 
