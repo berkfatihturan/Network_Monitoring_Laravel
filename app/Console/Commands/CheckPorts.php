@@ -31,7 +31,7 @@ class CheckPorts extends Command
      */
 
     //return true if port work
-    function checkPort($host, $port)
+    function checkPort($host, $port): bool
     {
         $connection = @fsockopen($host, $port);
 
@@ -39,7 +39,7 @@ class CheckPorts extends Command
             fclose($connection);
             return true;
         } else {
-            return false;;
+            return false;
         }
     }
 

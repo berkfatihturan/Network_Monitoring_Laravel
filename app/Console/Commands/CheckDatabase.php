@@ -34,7 +34,7 @@ class CheckDatabase extends Command
      * Execute the console command.
      */
     //return true if server work
-    function pingServer($host)
+    function pingServer($host): bool
     {
         $outcome = null;
         $status = null;
