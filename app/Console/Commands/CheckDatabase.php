@@ -92,7 +92,7 @@ class CheckDatabase extends Command
             $response = $this->pingServer($server);
             // checking the server is work
 
-            if ($item->status && $response) {
+            if ($item->status && !$response) {
 
                 $details['ip'] = $item->ip;
                 $details['updated_at'] = now();
