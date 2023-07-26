@@ -52,12 +52,11 @@ class CheckPorts extends Command
         //send mail to all users
         foreach ($users as $user) {
             if (optional($user->user_login_permission)->is_allowed) {
-
                 try {
                     // send mail
                     Mail::to($user->email)->send(new AlertMail($details));
                 } catch (Throwable $e) {
-                    print($e);
+
                 }
 
             }
@@ -81,7 +80,7 @@ class CheckPorts extends Command
             $response = $this->checkPort($item->server->ip, intval($port));
             // checking status true -> false
 
-            if ($item->status && !$response) {
+            if ($item->status && $response) {
                 $details['ip'] = $item->port;
                 $details['type'] = "Port";
                 // send mail to all users
