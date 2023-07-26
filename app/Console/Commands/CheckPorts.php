@@ -51,20 +51,17 @@ class CheckPorts extends Command
 
         //send mail to all users
         foreach ($users as $user) {
-            //if (optional($user->user_login_permission)->is_allowed) {
+            if (optional($user->user_login_permission)->is_allowed) {
 
-            try {
-                $mail = new AlertMail($details);
-                Mail::to($user->email)->send($mail);
-            }catch (Throwable $e) {
-                print($e);
+                try {
+                    // send mail
+                    $mail = new AlertMail($details);
+                    Mail::to('bft_@outlook.com')->send($mail);
+                } catch (Throwable $e) {
+                    print($e);
+                }
+
             }
-            // send mail
-
-
-
-
-            //}
         }
     }
 
@@ -72,7 +69,7 @@ class CheckPorts extends Command
     {
         $details = [
             'ip' => '',
-            'updated_at' => ''
+            'updated_at' => now()
         ];
 
         //getting all port on database
@@ -87,7 +84,6 @@ class CheckPorts extends Command
 
             if ($item->status && $response) {
                 $details['ip'] = $item->port;
-                $details['updated_at'] = now();
                 $details['type'] = "Port";
                 // send mail to all users
                 $this->sendMailtoUsers($details);

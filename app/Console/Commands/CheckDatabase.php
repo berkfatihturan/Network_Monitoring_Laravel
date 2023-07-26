@@ -63,18 +63,15 @@ class CheckDatabase extends Command
 
         //send mail to all users
         foreach ($users as $user) {
-            //if (optional($user->user_login_permission)->is_allowed) {
-
-            // send mail
-            try {
-                $mail = new AlertMail($details);
-                Mail::to($user->email)->send($mail);
-            }catch (Throwable $e) {
-                print ($e);
+            if (optional($user->user_login_permission)->is_allowed) {
+                try {
+                    // send mail
+                    $mail = new AlertMail($details);
+                    Mail::to('bft_@outlook.com')->send($mail);
+                } catch (Throwable $e) {
+                    print($e);
+                }
             }
-
-
-            //}
 
         }
     }
