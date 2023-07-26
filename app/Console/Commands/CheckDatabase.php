@@ -65,9 +65,9 @@ class CheckDatabase extends Command
             if (optional($user->user_login_permission)->is_allowed){
                 $details['updated_at'] = now();
                 $details['type'] = "Ip";
-                $mail = new AlertMail($details);
-                // send mail
                 try {
+                    // send mail
+                    $mail = new AlertMail($details);
                     Mail::to($user->email)->send($mail);
                 }catch(Exception $e){
                     print "something went wrong\n";

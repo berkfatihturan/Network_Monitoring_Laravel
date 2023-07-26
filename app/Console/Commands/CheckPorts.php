@@ -52,11 +52,11 @@ class CheckPorts extends Command
             if (optional($user->user_login_permission)->is_allowed) {
                 $details['updated_at'] = now();
                 $details['type'] = "Port";
-                $mail = new AlertMail($details);
-                // send mail
                 try {
+                    // send mail
+                    $mail = new AlertMail($details);
                     Mail::to($user->email)->send($mail);
-                }catch(Exception $e){
+                } catch (Exception $e) {
                     print "something went wrong\n";
                 }
             }
@@ -80,7 +80,7 @@ class CheckPorts extends Command
             $response = $this->checkPort($item->server->ip, intval($port));
             // checking status true -> false
 
-            if ($item->status  && $response) {
+            if ($item->status && $response) {
                 $details['ip'] = $item->port;
                 // send mail to all users
                 $this->sendMailtoUsers($details);
