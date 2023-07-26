@@ -57,7 +57,7 @@
                 <p style="margin-bottom: 5px"><label for="w3review">Details:</label></p>
                 <textarea id="w3review" name="w3review" rows="4" style="width:80vw">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
             </div>
-            
+
             <div class="col-lg-2 col-sm-12">
                 <input type="submit" value="Submit"
                        style="background-color: black; color: white; padding: 10px; border-radius: 10px; margin-top: 10px;">

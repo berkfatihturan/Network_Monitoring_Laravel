@@ -13,7 +13,7 @@
 
 <div class="table-item" onclick="showUpdateForm(this,<?php echo e($item->id); ?>)"><i class="fa-solid fa-wrench"></i></div>
 <div class="table-item" title="Delete"
-     onclick="location.href='<?php echo e(route('admin_server_destroy',['id' => $item->id])); ?>';"><i
+     onclick="location.href='<?php echo e(route('admin_ports_destroy',['id' => $item->id])); ?>';"><i
         class="fa-solid fa-trash"></i></div>
 <div class="table-item" title="Ports"><i class="fa-solid fa-angles-right"></i></div>
 <div class="table-item-bottom"><a onclick="toggleCollapseItem(<?php echo e($item->id); ?>)"><i class="fa-solid fa-chevron-down"></i>
