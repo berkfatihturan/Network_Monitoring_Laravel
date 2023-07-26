@@ -8,6 +8,7 @@ use App\Models\Servers;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
+use MongoDB\Driver\Exception\Exception;
 
 class CheckPorts extends Command
 {
@@ -53,7 +54,11 @@ class CheckPorts extends Command
                 $details['type'] = "Port";
                 $mail = new AlertMail($details);
                 // send mail
-                Mail::to($user->email)->send($mail);
+                try {
+                    Mail::to($user->email)->send($mail);
+                }catch(Exception $e){
+                    print "something went wrong\n";
+                }
             }
         }
     }
