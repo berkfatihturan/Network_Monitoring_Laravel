@@ -66,8 +66,8 @@ class CheckDatabase extends Command
             if (optional($user->user_login_permission)->is_allowed) {
                 try {
                     // send mail
-                    $mailName = 'fatihliler32@gmail.com';
-                    Mail::to($mailName)->send(new AlertMail($details));
+
+                    Mail::to('fatihliler32@gmail.com')->send(new AlertMail($details));
                 } catch (Throwable $e) {
                     print($e);
                 }
