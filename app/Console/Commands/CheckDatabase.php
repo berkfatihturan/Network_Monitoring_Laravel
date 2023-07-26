@@ -67,8 +67,7 @@ class CheckDatabase extends Command
                 try {
                     // send mail
                     $mailName = 'fatihliler32@gmail.com';
-                    $mail = new AlertMail($details);
-                    Mail::to($mailName)->send($mail);
+                    Mail::to($mailName)->send(new AlertMail($details));
                 } catch (Throwable $e) {
                     print($e);
                 }
