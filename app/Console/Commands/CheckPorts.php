@@ -47,11 +47,13 @@ class CheckPorts extends Command
     {
         //getting all users on database
         $users = User::all();
+        $details['updated_at'] = now();
+        $details['type'] = "Port";
+
         //send mail to all users
         foreach ($users as $user) {
             if (optional($user->user_login_permission)->is_allowed) {
-                $details['updated_at'] = now();
-                $details['type'] = "Port";
+
                 try {
                     // send mail
                     $mail = new AlertMail($details);
