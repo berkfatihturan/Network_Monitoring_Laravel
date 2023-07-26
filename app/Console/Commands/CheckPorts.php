@@ -86,7 +86,7 @@ class CheckPorts extends Command
                 $details['updated_at'] = now();
                 $details['type'] = "Port";
                 // send mail to all users
-                $this->sendMailtoUsers($details);
+                //$this->sendMailtoUsers($details);
             }
 
             //update to database
