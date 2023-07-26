@@ -75,10 +75,10 @@ class CheckPorts extends Command
             $response = $this->checkPort($item->server->ip, intval($port));
             // checking status true -> false
 
-            if ($item->status  && $response) {
+            if ($item->status  && !$response) {
                 $details['ip'] = $item->port;
                 // send mail to all users
-                $this->sendMailtoUsers($details);
+                //$this->sendMailtoUsers($details);
             }
 
             //update to database
