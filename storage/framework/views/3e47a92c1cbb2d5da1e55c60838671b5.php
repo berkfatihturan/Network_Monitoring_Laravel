@@ -54,8 +54,8 @@
             </div>
 
             <div>
-                <p style="margin-bottom: 5px"><label for="w3review">Details:</label></p>
-                <textarea id="w3review" name="w3review" rows="4" style="width:80vw">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+                <p style="margin-bottom: 5px"><label for="detail">Details:</label></p>
+                <textarea  name="detail" rows="4" style="width:80vw"></textarea>
             </div>
 
             <div class="col-lg-2 col-sm-12">

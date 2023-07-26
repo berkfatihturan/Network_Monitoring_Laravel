@@ -82,7 +82,7 @@
             var headerColor = "<?php echo e($settingsData['primary_color']); ?>";
             var contrastColor = getContrastColor(headerColor);
             // Set the text color to the contrast color
-            $("header *").css("color", contrastColor);
+            $("header .dropdown-toggle *").css("color", contrastColor);
 
             var boxColor = "<?php echo e($settingsData['secondary_color']); ?>";
             var contrastBoxColor = getContrastColor(boxColor);

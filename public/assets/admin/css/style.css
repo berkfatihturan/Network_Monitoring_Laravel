@@ -110,6 +110,36 @@ header * {
     border: 1px solid black;
 }
 
+header .dropdown-menu {
+    margin: 20px 1000px 0 0!important;
+    background: rgb(233, 238, 238, 1) !important;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+header  .dropdown-menu li a{
+    font-size: 1.4rem;
+    text-decoration: none;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header  .dropdown-menu li a:hover{
+    color: black;
+}
+
+header .dropdown-menu li i{
+    margin-right: 30px;
+}
+
+
+
+
+
+
+
 /* header -end- */
 
 /* -sidebar -start-*/
@@ -439,3 +469,6 @@ main {
 }
 
 /* table -end- */
+
+
+

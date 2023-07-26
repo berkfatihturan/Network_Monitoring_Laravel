@@ -35,7 +35,8 @@
 
     <div class="section_header">
         <h1 id="admin_section_title">PORTS</h1>
-        <a class="btn btn-info addButton" onclick="toggleCollapse()"> <i class="fa-solid fa-plus"></i> ADD
+        <a class="btn btn-info addButton" onclick="toggleCollapse()"> <i class="fa-solid fa-plus"
+                                                                         style="color: white"></i> ADD
         </a>
     </div>
 
@@ -59,6 +60,12 @@
                 <label for="lname">Port:</label><br>
                 <input type="text" name="port"><br><br>
             </div>
+
+            <div>
+                <p style="margin-bottom: 5px"><label for="detail">Details:</label></p>
+                <textarea  name="detail" rows="4" style="width:80vw"></textarea>
+            </div>
+
             <div class="col-lg-3 col-sm-12">
                 <input type="submit" value="Submit"
                        style="background-color: black; color: white; padding: 10px; border-radius: 10px; margin-top: 10px;">
