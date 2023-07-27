@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('app:check-database')->everyMinute()->withoutOverlapping();
         $schedule->command('app:check-ports')->everyMinute()->withoutOverlapping();
+        set_time_limit(60);
         // $schedule->command('inspire')->hourly();
     }
 
