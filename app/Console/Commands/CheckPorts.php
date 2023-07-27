@@ -65,6 +65,7 @@ class CheckPorts extends Command
 
     public function handle()
     {
+        set_time_limit(59);
         $details = [
             'ip' => '',
             'updated_at' => now()
