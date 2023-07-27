@@ -219,6 +219,17 @@ main {
     color: white;
     margin-bottom: 12px;
     font-weight: 500;
+    border-color: var(--secondory-white);
+}
+
+.addButton:hover{
+    background: var(--sidebar-background_color);
+    border-color: var(--sidebar-background_color);
+    color: red !important;
+}
+
+.addButton:hover i{
+    color: red !important;
 }
 
 #collapseForm {
