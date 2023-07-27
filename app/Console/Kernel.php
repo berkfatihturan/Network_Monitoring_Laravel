@@ -18,8 +18,8 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:check-database')->everyMinute();
-        $schedule->command('app:check-ports')->everyMinute();
+        $schedule->command('app:check-database')->everyMinute()->withoutOverlapping();
+        $schedule->command('app:check-ports')->everyMinute()->withoutOverlapping();
         // $schedule->command('inspire')->hourly();
     }
 
