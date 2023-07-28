@@ -82,23 +82,17 @@
             <tr>
                 <th class="item_checkbox">Id</th>
                 <th class="item_name">NAME</th>
-                <th class="item_email">Temp</th>
+                <th class="item_email">TEMPERATURE</th>
                 <th class="item_email">HUMIDITY</th>
-                <th class="item_status">STATUS</th>
+
             </tr>
             @foreach($deviceData as $item)
                 <tr>
                     <td class="item_checkbox">{{$item->id}}</td>
                     <td class="item_name">{{$item->name}}</td>
-                    <td class="item_email">{{$item->temp}}</td>
-                    <td class="item_email">{{$item->humidity}}</td>
-                    <td class="item_status">@if($item->status)
-                            <i class="fa-solid fa-square-check"
-                               style="color: green; font-size: 2rem; content: 'out'"></i>
-                        @else
-                            <i class="fa-solid fa-square-xmark" style="color: red; font-size: 2rem; content: 'out'"></i>
-                        @endif
-                    </td>
+                    <td class="item_email">{{$item->temp}}°C</td>
+                    <td class="item_email">{{$item->humidity}} %</td>
+
 
                 </tr>
             @endforeach

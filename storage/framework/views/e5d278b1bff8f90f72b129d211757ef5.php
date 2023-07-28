@@ -80,23 +80,17 @@
             <tr>
                 <th class="item_checkbox">Id</th>
                 <th class="item_name">NAME</th>
-                <th class="item_email">Temp</th>
+                <th class="item_email">TEMPERATURE</th>
                 <th class="item_email">HUMIDITY</th>
-                <th class="item_status">STATUS</th>
+
             </tr>
             <?php $__currentLoopData = $deviceData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
                     <td class="item_checkbox"><?php echo e($item->id); ?></td>
                     <td class="item_name"><?php echo e($item->name); ?></td>
-                    <td class="item_email"><?php echo e($item->temp); ?></td>
-                    <td class="item_email"><?php echo e($item->humidity); ?></td>
-                    <td class="item_status"><?php if($item->status): ?>
-                            <i class="fa-solid fa-square-check"
-                               style="color: green; font-size: 2rem; content: 'out'"></i>
-                        <?php else: ?>
-                            <i class="fa-solid fa-square-xmark" style="color: red; font-size: 2rem; content: 'out'"></i>
-                        <?php endif; ?>
-                    </td>
+                    <td class="item_email"><?php echo e($item->temp); ?>°C</td>
+                    <td class="item_email"><?php echo e($item->humidity); ?> %</td>
+
 
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
