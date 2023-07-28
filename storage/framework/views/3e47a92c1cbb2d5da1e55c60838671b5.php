@@ -45,12 +45,12 @@
             <?php echo csrf_field(); ?>
             <div class="col-lg-3 col-sm-12">
                 <label for="fname">Server Name:</label><br>
-                <input type="text" name="server_name"><br>
+                <input type="text" name="server_name" required><br>
 
             </div>
             <div class="col-lg-3 col-sm-12">
                 <label for="lname">Ip:</label><br>
-                <input type="text" name="ip"><br><br>
+                <input type="text" name="ip" required><br><br>
             </div>
 
             <div>
