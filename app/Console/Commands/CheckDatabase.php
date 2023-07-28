@@ -7,6 +7,7 @@ use App\Models\Servers;
 use App\Models\Settings;
 use App\Models\User;
 use App\Models\user_login_permission;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
@@ -75,6 +76,12 @@ class CheckDatabase extends Command
         }
     }
 
+    protected function asDateTime()
+    {
+        $currentTime = Carbon::now("Europe/Istanbul");
+        return $currentTime->toDateTimeString();
+    }
+
 
     public function handle()
     {
@@ -97,7 +104,7 @@ class CheckDatabase extends Command
             if ($item->status && !$response) {
 
                 $details['ip'] = $item->ip;
-                $details['updated_at'] = now();
+                $details['updated_at'] = $this->asDateTime();
                 $details['type'] = "Ip";
                 // send mail to all users
                 $this->sendMailtoUsers($details);
@@ -107,7 +114,7 @@ class CheckDatabase extends Command
 
             //update to database
             $item->status = $response;
-            $item->updated_at = now();
+            $item->updated_at = $this->asDateTime();
             $item->save();
         }
 

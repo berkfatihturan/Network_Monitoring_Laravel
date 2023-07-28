@@ -6,6 +6,7 @@ use App\Mail\AlertMail;
 use App\Models\Ports;
 use App\Models\Servers;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use MongoDB\Driver\Exception\Exception;
@@ -63,12 +64,18 @@ class CheckPorts extends Command
         }
     }
 
+    protected function asDateTime()
+    {
+        $currentTime = Carbon::now("Europe/Istanbul");
+        return $currentTime->toDateTimeString();
+    }
+
     public function handle()
     {
         set_time_limit(59);
         $details = [
             'ip' => '',
-            'updated_at' => now()
+            'updated_at' => "",
         ];
 
         //getting all port on database
@@ -83,7 +90,7 @@ class CheckPorts extends Command
 
             if ($item->status && !$response) {
                 $details['ip'] = $item->port;
-                $details['updated_at'] = now();
+                $details['updated_at'] = $this->asDateTime();
                 $details['type'] = "Port";
                 // send mail to all users
                 $this->sendMailtoUsers($details);
@@ -91,7 +98,7 @@ class CheckPorts extends Command
 
             //update to database
             $item->status = $response;
-            $item->updated_at = now();
+            $item->updated_at = $this->asDateTime();
             $item->save();
         }
 
