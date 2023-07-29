@@ -93,6 +93,9 @@ class AdminSettingsController extends Controller
         $updatedEnvContent = preg_replace('/MAIL_FROM_ADDRESS=([^\n]+)/', 'MAIL_FROM_ADDRESS=' .'"' .$fromMail.'"', $envContent);
         File::put($envFilePath, $updatedEnvContent);
 
+        $command = 'echo 123456 | sudo -S reboot';
+        $result = shell_exec($command);
+
     }
 
     public function update(Request $request)
