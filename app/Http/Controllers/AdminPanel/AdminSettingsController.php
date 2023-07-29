@@ -93,8 +93,7 @@ class AdminSettingsController extends Controller
         $updatedEnvContent = preg_replace('/MAIL_FROM_ADDRESS=([^\n]+)/', 'MAIL_FROM_ADDRESS=' .'"' .$fromMail.'"', $envContent);
         File::put($envFilePath, $updatedEnvContent);
 
-        $command = 'echo 123456 | sudo -S reboot';
-        $result = shell_exec($command);
+
 
     }
 
@@ -114,15 +113,27 @@ class AdminSettingsController extends Controller
             $data->logo=$request->file('logo')->store('images');
         }
 
-        $data->from_email_address = $request->from_email_address;
-        $data->mail_app_password = $request->mail_app_password;
-
         $data->primary_color = $request->primary_color;
         $data->secondary_color = $request->secondary_color;
 
-        $data->save();
+        if($data->from_email_address != $request->from_email_address or $data->mail_app_password != $request->mail_app_password){
 
-        $this->updateMailAdress();
+            $data->from_email_address = $request->from_email_address;
+            $data->mail_app_password = $request->mail_app_password;
+            $data->save();
+
+            $this->updateMailAdress();
+
+            $command = 'echo 123456 | sudo -S reboot';
+            shell_exec($command);
+        }else{
+            $data->from_email_address = $request->from_email_address;
+            $data->mail_app_password = $request->mail_app_password;
+            $data->save();
+        }
+
+
+
 
         return redirect('admin/settings');
 
