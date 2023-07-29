@@ -55,13 +55,13 @@ Route::middleware(['admin'])->prefix('admin')->name("admin_")->group(function ()
         Route::get('/reload/{id_item}/{is_open}', 'reloadPage')->name('reloadPage');
     });
 
-    /* Admin Settings Panel Routes*/
+    /* Admin Devices Panel Routes*/
     Route::prefix('/devices')->name("devices_")->controller(AdminDevicesController::class)->group(function (){
         Route::get('/', 'index')->name('index');
         Route::post('/store', 'store')->name('store');
         Route::post('/update', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
-        Route::get('/reload/{id_item}/{is_open}', 'reloadPage')->name('reloadPage');
+        Route::get('/detail/{id}', 'detail')->name('detail');
     });
 
     /* Admin Users Panel Routes*/

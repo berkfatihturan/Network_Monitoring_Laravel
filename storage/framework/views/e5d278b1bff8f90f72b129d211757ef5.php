@@ -51,8 +51,19 @@
             bottom: 2px;
         }
 
-        .item_status {
+        .item_settings {
+            width: 10%;
 
+        }
+
+        .item_settings i {
+            font-size: 1.5rem;
+            padding: 7px;
+            border-radius: 5px;
+        }
+
+        .item_settings i:hover {
+            background: #9ca3af;
         }
 
         @media only screen and (max-width: 992px) {
@@ -82,7 +93,7 @@
                 <th class="item_name">NAME</th>
                 <th class="item_email">TEMPERATURE</th>
                 <th class="item_email">HUMIDITY</th>
-
+                <th class="item_settings"></th>
             </tr>
             <?php $__currentLoopData = $deviceData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
@@ -90,7 +101,9 @@
                     <td class="item_name"><?php echo e($item->name); ?></td>
                     <td class="item_email"><?php echo e($item->temp); ?>°C</td>
                     <td class="item_email"><?php echo e($item->humidity); ?> %</td>
-
+                    <td class="item_settings" title="Settings"
+                        onclick="return !window.open('<?php echo e(route('admin_devices_detail',['id' => 1])); ?>','','width=1000,height=800')"><i class="fa-solid fa-gear"></i>
+                    </td>
 
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

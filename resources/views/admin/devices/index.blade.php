@@ -53,8 +53,19 @@
             bottom: 2px;
         }
 
-        .item_status {
+        .item_settings {
+            width: 10%;
 
+        }
+
+        .item_settings i {
+            font-size: 1.5rem;
+            padding: 7px;
+            border-radius: 5px;
+        }
+
+        .item_settings i:hover {
+            background: #9ca3af;
         }
 
         @media only screen and (max-width: 992px) {
@@ -84,7 +95,7 @@
                 <th class="item_name">NAME</th>
                 <th class="item_email">TEMPERATURE</th>
                 <th class="item_email">HUMIDITY</th>
-
+                <th class="item_settings"></th>
             </tr>
             @foreach($deviceData as $item)
                 <tr>
@@ -92,7 +103,9 @@
                     <td class="item_name">{{$item->name}}</td>
                     <td class="item_email">{{$item->temp}}°C</td>
                     <td class="item_email">{{$item->humidity}} %</td>
-
+                    <td class="item_settings" title="Settings"
+                        onclick="return !window.open('{{route('admin_devices_detail',['id' => 1])}}','','width=1000,height=800')"><i class="fa-solid fa-gear"></i>
+                    </td>
 
                 </tr>
             @endforeach

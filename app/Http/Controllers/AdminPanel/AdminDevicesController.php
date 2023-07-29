@@ -48,6 +48,17 @@ class AdminDevicesController extends Controller
         //
     }
 
+    public function detail(string $id)
+    {
+        $settingsData = Settings::first();
+        $deviceData = Devices::all();
+
+        return view('admin.devices.detail',[
+            'settingsData' => $settingsData,
+            'deviceData' =>$deviceData
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
