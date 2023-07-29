@@ -625,6 +625,38 @@
                         <label>Mail Application Key</label>
                         <input type="text" name="mail_app_password" value="{{$settingsData['mail_app_password']}}"/>
                     </div>
+
+                    @error('error')
+
+                    <details style="background: #E64040">
+                        <summary>
+
+                            <strong style="color: white; font-size: 1.2rem; font-weight: 500">{{$message}}<span id="countdown" style="color: white"></span></strong>
+
+                            <script>
+                                // counter for id=countdown
+                                const targetDate = new Date().getTime() + 5000; // 5000 ms = 5 s
+                                function updateCountdown() {
+                                    const now = new Date().getTime();
+                                    const timeRemaining = targetDate - now;
+
+                                    if (timeRemaining <= 0) {
+                                        window.location.href = "{{route('admin_settings_restarting')}}";
+                                    } else {
+                                        const seconds = Math.floor(timeRemaining / 1000);
+                                        document.getElementById("countdown").innerHTML = " "+seconds;
+                                    }
+                                }
+                                updateCountdown();
+                                setInterval(updateCountdown, 1000);
+                            </script>
+
+                        </summary>
+
+                    </details>
+
+
+                    @enderror
                 </section>
 
 

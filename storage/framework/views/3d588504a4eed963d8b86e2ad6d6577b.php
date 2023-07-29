@@ -623,6 +623,45 @@
                         <label>Mail Application Key</label>
                         <input type="text" name="mail_app_password" value="<?php echo e($settingsData['mail_app_password']); ?>"/>
                     </div>
+
+                    <?php $__errorArgs = ['error'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+
+                    <details style="background: #E64040">
+                        <summary>
+
+                            <strong style="color: white; font-size: 1.2rem; font-weight: 500"><?php echo e($message); ?><span id="countdown" style="color: white"></span></strong>
+
+                            <script>
+                                // counter for id=countdown
+                                const targetDate = new Date().getTime() + 5000; // 5000 ms = 5 s
+                                function updateCountdown() {
+                                    const now = new Date().getTime();
+                                    const timeRemaining = targetDate - now;
+
+                                    if (timeRemaining <= 0) {
+                                        window.location.href = "<?php echo e(route('admin_settings_restarting')); ?>";
+                                    } else {
+                                        const seconds = Math.floor(timeRemaining / 1000);
+                                        document.getElementById("countdown").innerHTML = " "+seconds;
+                                    }
+                                }
+                                updateCountdown();
+                                setInterval(updateCountdown, 1000);
+                            </script>
+
+                        </summary>
+
+                    </details>
+
+
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 </section>
 
 

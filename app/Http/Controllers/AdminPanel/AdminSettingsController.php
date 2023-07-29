@@ -126,12 +126,8 @@ class AdminSettingsController extends Controller
 
         if($email_check or $password_check){
             $this->updateMailAdress();
-            view('admin.settings.index',[
-                'settingsData' => $data
-            ]);
-            sleep(5);
-            $command = 'echo 123456 | sudo -S reboot';
-            shell_exec($command);
+            return redirect('admin/settings')->withErrors(['error'=>'Restarting...']);
+
         }
 
         return redirect('admin/settings');
@@ -140,7 +136,8 @@ class AdminSettingsController extends Controller
 
     public function restarting(Request $request)
     {
-
+        $command = 'echo 123456 | sudo -S reboot';
+        shell_exec($command);
     }
 
     /**
