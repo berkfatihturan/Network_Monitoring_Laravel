@@ -74,6 +74,14 @@
         justify-content:center;
     }
 
+    .restart_warning {
+        display: none;
+    }
+
+    .restart_warning__mobile{
+        display: block;
+    }
+
 
 
 
