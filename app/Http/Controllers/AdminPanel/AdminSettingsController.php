@@ -129,6 +129,7 @@ class AdminSettingsController extends Controller
             view('admin.settings.index',[
                 'settingsData' => $data
             ]);
+            sleep(5);
             $command = 'echo 123456 | sudo -S reboot';
             shell_exec($command);
         }
