@@ -113,32 +113,32 @@ class AdminSettingsController extends Controller
             $data->logo=$request->file('logo')->store('images');
         }
 
+        $email_check = $data->from_email_address != $request->from_email_address;
+        $password_check = $data->mail_app_password != $request->mail_app_password;
+
+        $data->from_email_address = $request->from_email_address;
+        $data->mail_app_password = $request->mail_app_password;
+
         $data->primary_color = $request->primary_color;
         $data->secondary_color = $request->secondary_color;
 
-        if($data->from_email_address != $request->from_email_address or $data->mail_app_password != $request->mail_app_password){
+        $data->save();
 
-            $data->from_email_address = $request->from_email_address;
-            $data->mail_app_password = $request->mail_app_password;
-            $data->save();
-
+        if($email_check or $password_check){
             $this->updateMailAdress();
-
+            view('admin.settings.index',[
+                'settingsData' => $data
+            ]);
             $command = 'echo 123456 | sudo -S reboot';
             shell_exec($command);
-        }else{
-            $data->from_email_address = $request->from_email_address;
-            $data->mail_app_password = $request->mail_app_password;
-            $data->save();
         }
-
-
-
 
         return redirect('admin/settings');
 
+    }
 
-
+    public function restarting(Request $request)
+    {
 
     }
 

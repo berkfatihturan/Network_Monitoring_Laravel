@@ -89,7 +89,7 @@ Route::middleware(['admin'])->prefix('admin')->name("admin_")->group(function ()
         Route::post('/store', 'store')->name('store');
         Route::post('/update', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
-        Route::get('/reload/{id_item}/{is_open}', 'reloadPage')->name('reloadPage');
+        Route::post('/restarting', 'restarting')->name('restarting');
     });
 
 
