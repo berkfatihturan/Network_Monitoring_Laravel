@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Mail\AlertMail;
+use App\Models\Log;
 use App\Models\Ports;
 use App\Models\Servers;
 use App\Models\User;
@@ -70,6 +71,29 @@ class CheckPorts extends Command
         return $currentTime->toDateTimeString();
     }
 
+    function saveToLog($item,$status)
+    {
+        // Aynı server_id'ye sahip olan kayıtları tarihlerine göre sıralayarak en eski olanı buluyoruz
+        $oldestRecords = Log::where('process_id', $item->id)
+            ->where('process_type', 2)
+            ->orderBy('created_at')
+            ->limit(5) // En eski 5 kayıt
+            ->get();
+
+        if ($oldestRecords->count() >= 5) {
+            $oldestRecord = $oldestRecords->first();
+            $oldestRecord->delete();
+        }
+
+        $log = new Log();
+        $log->process_type = 2;
+        $log->process_id = $item->id;
+
+        $text = "".json_encode($status)." |  ".$this->asDateTime();
+        $log->operation = $text;
+        $log->save();
+    }
+
     public function handle()
     {
         set_time_limit(59);
@@ -99,6 +123,7 @@ class CheckPorts extends Command
             //update to database
             $item->status = $response;
             $item->updated_at = $this->asDateTime();
+            $this->saveToLog($item,$item->status);
             $item->save();
         }
 

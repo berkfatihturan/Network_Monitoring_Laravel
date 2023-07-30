@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Mail\AlertMail;
+use App\Models\Log;
 use App\Models\Servers;
 use App\Models\Settings;
 use App\Models\User;
@@ -82,6 +83,29 @@ class CheckDatabase extends Command
         return $currentTime->toDateTimeString();
     }
 
+    function saveToLog($item,$status)
+    {
+        // Aynı server_id'ye sahip olan kayıtları tarihlerine göre sıralayarak en eski olanı buluyoruz
+        $oldestRecords = Log::where('process_id', $item->id)
+            ->where('process_type', 1)
+            ->orderBy('created_at')
+            ->limit(5) // En eski 5 kayıt
+            ->get();
+
+        if ($oldestRecords->count() >= 5) {
+            $oldestRecord = $oldestRecords->first();
+            $oldestRecord->delete();
+        }
+
+        $log = new Log();
+        $log->process_type = 1;
+        $log->process_id = $item->id;
+
+        $text = "".json_encode($status)." |  ".optional($item->devices->first())->temp."  |  ".optional($item->devices->first())->humidity."  |  ".$this->asDateTime();
+        $log->operation = $text;
+        $log->save();
+    }
+
 
     public function handle()
     {
@@ -115,6 +139,7 @@ class CheckDatabase extends Command
             //update to database
             $item->status = $response;
             $item->updated_at = $this->asDateTime();
+            $this->saveToLog($item,$item->status);
             $item->save();
         }
 

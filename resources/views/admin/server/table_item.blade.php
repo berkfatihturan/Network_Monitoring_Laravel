@@ -20,25 +20,16 @@
 <div class="table-item" onclick="showUpdateForm(this,{{$item->id}})"><i class="fa-solid fa-wrench"></i></div>
 <div class="table-item" title="Delete"
      onclick="location.href='{{ route('admin_server_destroy',['id' => $item->id]) }}';"><i
-        class="fa-solid fa-trash"></i></div>
-<div class="table-item" title="Ports"><i class="fa-solid fa-angles-right"></i></div>
+        class="fa-solid fa-trash"></i>
+</div>
+<div class="table-item" title="Detail" onclick="return !window.open('{{ route('admin_server_show',['id' => $item->id]) }}','','width=1000,height=800')"><i class="fa-solid fa-angles-right"></i></div>
 <div class="table-item-bottom"><a onclick="toggleCollapseItem({{$item->id}})"><i class="fa-solid fa-chevron-down"></i>
         Detail</a></div>
 <div class="server_detail_text" id="collapseItem-{{$item->id}}" style="display: {{$display_status}};">
     <hr/>
     <div class="row" style="margin: 20px;">
         <div class="col-lg-1 col-sm-12" style="font-size: 1.4rem; font-weight: 600">Notes:</div>
-        <div class="col-lg-10 col-sm-12" style="padding-top: 8px">DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to
-            dynamically assign an IP address to any device, or node, on a network so it can communicate using IP.DHCP
-            (Dynamic Host Configuration Protocol) is a network management protocol used to dynamically assign an IP
-            address to any device, or node, on a network so it can communicate using IP.DHCP (Dynamic Host Configuration
-            Protocol) is a network management protocol used to dynamically assign an IP address to any device, or node,
-            on a network so it can communicate using IP.DHCP (Dynamic Host Configuration Protocol) is a network
-            management protocol used to dynamically assign an IP address to any device, or node, on a network so it can
-            communicate using IP.DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to
-            dynamically assign an IP address to any device, or node, on a network so it can communicate using IP.DHCP
-            (Dynamic Host Configuration Protocol) is a network management protocol used to dynamically assign an IP
-            address to any device, or node, on a network so it can communicate using IP.
+        <div class="col-lg-10 col-sm-12" style="padding-top: 8px">{{$item->detail}}
         </div>
     </div>
 </div>

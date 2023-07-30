@@ -220,11 +220,11 @@ main {
 .addButton:hover {
     background: var(--sidebar-background_color);
     border-color: var(--sidebar-background_color);
-    color: red !important;
+    color: var(--text-contrastColor) !important;
 }
 
 .addButton:hover i {
-    color: red !important;
+    color: var(--text-contrastColor) !important;
 }
 
 #collapseForm {

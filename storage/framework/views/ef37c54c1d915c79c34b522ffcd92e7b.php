@@ -18,7 +18,10 @@
     <input type="text" name="port_name"><br>
 
     <label for="lname">Port:</label><br>
-    <input type="text" name="port"><br><br>
+    <input type="text" name="port"><br>
+
+    <p style="margin-bottom: 5px"><label for="detail">Details:</label></p>
+    <textarea name="detail" rows="4" style="width: 100%"></textarea>
 
 
     <input type="submit" value="Submit"

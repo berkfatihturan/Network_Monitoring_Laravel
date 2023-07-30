@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('port_name');
             $table->string('port',50);
             $table->string('status',50)->nullable();
+            $table->text('detail')->nullable();
             $table->timestamps();
         });
     }

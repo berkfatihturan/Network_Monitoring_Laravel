@@ -15,10 +15,14 @@
 <div class="table-item" title="Delete"
      onclick="location.href='{{ route('admin_ports_destroy',['id' => $item->id]) }}';"><i
         class="fa-solid fa-trash"></i></div>
-<div class="table-item" title="Ports"><i class="fa-solid fa-angles-right"></i></div>
+<div class="table-item" title="Detail" onclick="return !window.open('{{ route('admin_ports_show',['id' => $item->id]) }}','','width=1000,height=800')"><i class="fa-solid fa-angles-right"></i></div>
 <div class="table-item-bottom"><a onclick="toggleCollapseItem({{$item->id}})"><i class="fa-solid fa-chevron-down"></i>
         Detail</a></div>
 <div class="port_detail_text" id="collapseItem-{{$item->id}}" style="display: {{$display_status}};">
     <hr/>
-    d*wüojqfqwofuqwjüofjq9op
+    <div class="row" style="margin: 20px;">
+        <div class="col-lg-1 col-sm-12" style="font-size: 1.4rem; font-weight: 600">Notes:</div>
+        <div class="col-lg-10 col-sm-12" style="padding-top: 8px">{{$item->detail}}
+        </div>
+    </div>
 </div>

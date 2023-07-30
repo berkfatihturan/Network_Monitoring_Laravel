@@ -5,6 +5,9 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Jobs\MyBackgroundJob;
 use App\Mail\AlertMail;
+use App\Models\Log;
+use App\Models\Ports;
+use App\Models\Room;
 use App\Models\Servers;
 use App\Models\Settings;
 use Illuminate\Http\Request;
@@ -49,6 +52,7 @@ class AdminServerController extends Controller
         $data->server_name = $request->server_name;
         $data->ip = $request->ip;
         $data->status = $request->status;
+        $data->detail = $request->detail;
 
         $data->save();
         return redirect('admin/server');
@@ -59,7 +63,17 @@ class AdminServerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $serverData = Servers::find($id);
+        $portsData = Ports::where('server_id',$id)->get();
+        $settingsData = Settings::first();
+        $logData = Log::where('process_id',$id)->where('process_type',1)->get();
+
+        return view('admin.server.show', [
+            'serverData' => $serverData,
+            'settingsData' => $settingsData,
+            'portsData' => $portsData,
+            'logData' => $logData,
+        ]);
     }
 
     /**
@@ -79,7 +93,7 @@ class AdminServerController extends Controller
         $data =Servers::find($id);
         $data->server_name = $request->server_name;
         $data->ip = $request->ip;
-        $data->status = "None";
+        $data->detail = $request->detail;
 
         $data->save();
         return redirect('admin/server');
@@ -102,6 +116,11 @@ class AdminServerController extends Controller
      */
     public function destroy($id)
     {
+
+        if (Room::where('servers_id',$id)->first() != null){
+            Room::where('servers_id',$id)->delete();
+        }
+
         $data = Servers::find($id);
         $data->delete();
 

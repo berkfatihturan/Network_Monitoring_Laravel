@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Log;
 use App\Models\Ports;
 use App\Models\Servers;
 use App\Models\Settings;
@@ -47,6 +48,7 @@ class AdminPortsController extends Controller
         $data->server_id = $request->server_id;
         $data->port_name = $request->port_name;
         $data->port = $request->port;
+        $data->detail = $request->detail;
 
 
         $data->save();
@@ -58,7 +60,15 @@ class AdminPortsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $portData = Ports::find($id);
+        $settingsData = Settings::first();
+        $logData = Log::where('process_id',$id)->where('process_type',2)->get();
+
+        return view('admin.ports.show', [
+            'portData' => $portData,
+            'settingsData' => $settingsData,
+            'logData' => $logData,
+        ]);
     }
 
     /**
@@ -79,6 +89,7 @@ class AdminPortsController extends Controller
         $data->server_id = $request->server_id;
         $data->port_name = $request->port_name;
         $data->port = $request->port;
+        $data->detail = $request->detail;
 
 
         $data->save();
