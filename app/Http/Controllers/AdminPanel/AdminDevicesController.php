@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\DeviceMailSettings;
 use App\Models\Devices;
 use App\Models\Room;
 use App\Models\Servers;
@@ -41,16 +42,30 @@ class AdminDevicesController extends Controller
     public function store(Request $request,$id)
     {
         $data = new Room();
+
         # if device removed and server add to new device remove ex-relation
         if (Room::where('servers_id',$request->server_id)->first() != null){
             Room::where('servers_id',$request->server_id)->delete();
         }
 
+        # if device have DeviceMailSettings update, if not create new
+        if(DeviceMailSettings::where('devices_id',$id)->first() == null){
+            $mailSetting = new DeviceMailSettings();
+        }else{
+            $mailSetting = DeviceMailSettings::where('devices_id',$id)->first();
+        }
+        $mailSetting->devices_id = $id;
+        $mailSetting->temp = $request->mailTemp;
+        $mailSetting->humidity = $request->mailHumidity;
+        $mailSetting->save();
+
         # check Already exist
         if(Room::where('servers_id',$request->server_id)->where('devices_id',$id)->first() == null){
-            $data->servers_id = $request->server_id;
-            $data->devices_id = $id;
-            $data->save();
+            if ($request->server_id != "*"){
+                $data->servers_id = $request->server_id;
+                $data->devices_id = $id;
+                $data->save();
+            }
             return redirect(route('admin_devices_detail',['id'=>$id]));
         }else{
             # if Already exist not add

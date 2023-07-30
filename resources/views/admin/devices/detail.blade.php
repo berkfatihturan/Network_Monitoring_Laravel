@@ -66,6 +66,14 @@
             color: red;
         }
 
+        .mail_settings{
+            margin-left: 30px;
+            background: var(--sidebar-background_color);
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: var(--sidebar-text_color);
+        }
+
         @media only screen and (max-width: 992px) {
 
         }
@@ -91,40 +99,48 @@
             <td class="item_name">{{optional($deviceData)->name}}</td>
         </tr>
 
-        <tr>
-            <th class="item_email">Temperature</th>
-            <td class="item_email">{{optional($deviceData)->temp}}°C</td>
-        </tr>
+        <form action="{{route('admin_devices_store',['id' => $deviceData->id])}}" method="POST"
+              enctype="multipart/form-data">
+            @csrf
 
-        <tr>
-            <th class="">Humıdıty</th>
-            <td class="">{{optional($deviceData)->humidity}} %</td>
-        </tr>
+            <tr>
+                <th class="">Temperature</th>
+                <td class="">
+                    {{optional($deviceData)->temp}}°C
+                    <span class="mail_settings"> Set Mail Notification: <input name="mailTemp" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->temp}}"></span>
+                </td>
+            </tr>
 
-        <tr>
-            <th class="">Servers</th>
-            <td class="">
-                <ul id="server_relation_list">
-                    @if(optional($deviceData)->servers)
-                        @foreach(optional($deviceData)->servers as $item)
-                            <li>{{$item->ip}}<i class="fa-regular fa-circle-xmark"
-                                                onclick="location.href='{{route('admin_devices_destroy',['did'=>$deviceData->id,'sid' => $item->id])}}';"></i>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
-            </td>
+            <tr>
+                <th class="">Humıdıty</th>
+                <td class="">{{optional($deviceData)->humidity}} %
+                    <span class="mail_settings"> Set Mail Notification: <input name="mailHumidity" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->humidity}}"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="">Servers</th>
+                <td class="">
+                    <ul id="server_relation_list">
+                        @if(optional($deviceData)->servers)
+                            @foreach(optional($deviceData)->servers as $item)
+                                <li>{{$item->ip}}<i class="fa-regular fa-circle-xmark"
+                                                    onclick="location.href='{{route('admin_devices_destroy',['did'=>$deviceData->id,'sid' => $item->id])}}';"></i>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </td>
 
 
-        </tr>
+            </tr>
 
-        <tr>
-            <form action="{{route('admin_devices_store',['id' => $deviceData->id])}}" method="POST"
-                  enctype="multipart/form-data">
-                @csrf
+            <tr>
+
                 <th>Add a Server</th>
                 <td>
                     <select name="server_id">
+                        <option selected value="*">-------------</option>
                         @foreach($serverData as $item)
                             @if(!optional($item->devices->first())->id)
                                 <option value="{{ $item->id }}">{{ $item->ip }}</option>
@@ -140,8 +156,9 @@
                     @endif
 
                 </td>
-            </form>
-        </tr>
+
+            </tr>
+        </form>
     </table>
 
 @endsection

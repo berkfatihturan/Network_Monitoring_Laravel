@@ -14,12 +14,14 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\CheckDatabase::class,
         Commands\CheckPorts::class,
+        Commands\CheckTemp::class,
     ];
 
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('app:check-database')->everyMinute()->runInBackground();
         $schedule->command('app:check-ports')->everyMinute()->runInBackground();
+        $schedule->command('app:check-temp')->everyMinute()->runInBackground();
 
         // $schedule->command('inspire')->hourly();
     }

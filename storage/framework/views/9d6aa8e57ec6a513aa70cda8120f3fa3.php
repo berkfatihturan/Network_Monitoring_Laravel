@@ -91,13 +91,13 @@
         </tr>
 
         <tr>
-            <th class="item_email">IP</th>
-            <td class="item_email"><?php echo e(optional($serverData)->ip); ?></td>
+            <th class="">IP</th>
+            <td class=""><?php echo e(optional($serverData)->ip); ?></td>
         </tr>
 
         <tr>
-            <th class="item_email">Temperature</th>
-            <td class="item_email">
+            <th class="">Temperature</th>
+            <td class="">
                 <?php if(optional($serverData->devices->first())->id): ?>
                     <?php echo e($serverData->devices->first()->temp); ?>°C
                 <?php else: ?>
@@ -111,8 +111,8 @@
         </tr>
 
         <tr>
-            <th class="item_email">Status</th>
-            <td class="item_email">
+            <th class="">Status</th>
+            <td class="">
                 <span class="status-info" style="display: none"><?php echo e($serverData->status); ?></span>
                 <?php if($serverData->status): ?>
                     <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem; content: 'out'"></i>
@@ -124,17 +124,17 @@
         </tr>
 
         <tr>
-            <th class="item_email">Update Date</th>
-            <td class="item_email"><?php echo e($serverData->updated_at); ?></td>
+            <th class="">Update Date</th>
+            <td class=""><?php echo e($serverData->updated_at); ?></td>
         </tr>
 
         <tr>
-            <th class="item_email">Created at</th>
-            <td class="item_email"><?php echo e($serverData->created_at); ?></td>
+            <th class="">Created at</th>
+            <td class=""><?php echo e($serverData->created_at); ?></td>
         </tr>
 
         <tr>
-            <th class="item_email">Ports</th>
+            <th class="">Ports</th>
             <td class="">
                 <ul id="port_list">
 
@@ -146,16 +146,16 @@
             </td>
         </tr>
         <tr>
-            <th class="item_email">Notes</th>
-            <td class="item_email"><?php echo e($serverData->detail); ?></td>
+            <th class="">Notes</th>
+            <td class=""><?php echo e($serverData->detail); ?></td>
         </tr>
 
         <tr>
-            <th class="item_email">Log</th>
-            <td class="item_email">
+            <th class="">Log</th>
+            <td >
                 <ul>
                     <?php $__currentLoopData = $logData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><pre><?php echo e($item->operation); ?></pre></li>
+                        <li><?php echo e($item->operation); ?></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </ul>

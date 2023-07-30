@@ -12,4 +12,8 @@ class Devices extends Model
     public function servers(){
         return $this->belongsToMany(Servers::class,'rooms');
     }
+
+    public function mailSettings(){
+        return $this->hasOne(DeviceMailSettings::class);
+    }
 }

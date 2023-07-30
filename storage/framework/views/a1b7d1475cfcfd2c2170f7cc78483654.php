@@ -64,6 +64,14 @@
             color: red;
         }
 
+        .mail_settings{
+            margin-left: 30px;
+            background: var(--sidebar-background_color);
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: var(--sidebar-text_color);
+        }
+
         @media only screen and (max-width: 992px) {
 
         }
@@ -89,40 +97,48 @@
             <td class="item_name"><?php echo e(optional($deviceData)->name); ?></td>
         </tr>
 
-        <tr>
-            <th class="item_email">Temperature</th>
-            <td class="item_email"><?php echo e(optional($deviceData)->temp); ?>°C</td>
-        </tr>
+        <form action="<?php echo e(route('admin_devices_store',['id' => $deviceData->id])); ?>" method="POST"
+              enctype="multipart/form-data">
+            <?php echo csrf_field(); ?>
 
-        <tr>
-            <th class="">Humıdıty</th>
-            <td class=""><?php echo e(optional($deviceData)->humidity); ?> %</td>
-        </tr>
+            <tr>
+                <th class="">Temperature</th>
+                <td class="">
+                    <?php echo e(optional($deviceData)->temp); ?>°C
+                    <span class="mail_settings"> Set Mail Notification: <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"></span>
+                </td>
+            </tr>
 
-        <tr>
-            <th class="">Servers</th>
-            <td class="">
-                <ul id="server_relation_list">
-                    <?php if(optional($deviceData)->servers): ?>
-                        <?php $__currentLoopData = optional($deviceData)->servers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li><?php echo e($item->ip); ?><i class="fa-regular fa-circle-xmark"
-                                                onclick="location.href='<?php echo e(route('admin_devices_destroy',['did'=>$deviceData->id,'sid' => $item->id])); ?>';"></i>
-                            </li>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    <?php endif; ?>
-                </ul>
-            </td>
+            <tr>
+                <th class="">Humıdıty</th>
+                <td class=""><?php echo e(optional($deviceData)->humidity); ?> %
+                    <span class="mail_settings"> Set Mail Notification: <input name="mailHumidity" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->humidity); ?>"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="">Servers</th>
+                <td class="">
+                    <ul id="server_relation_list">
+                        <?php if(optional($deviceData)->servers): ?>
+                            <?php $__currentLoopData = optional($deviceData)->servers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($item->ip); ?><i class="fa-regular fa-circle-xmark"
+                                                    onclick="location.href='<?php echo e(route('admin_devices_destroy',['did'=>$deviceData->id,'sid' => $item->id])); ?>';"></i>
+                                </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
+                    </ul>
+                </td>
 
 
-        </tr>
+            </tr>
 
-        <tr>
-            <form action="<?php echo e(route('admin_devices_store',['id' => $deviceData->id])); ?>" method="POST"
-                  enctype="multipart/form-data">
-                <?php echo csrf_field(); ?>
+            <tr>
+
                 <th>Add a Server</th>
                 <td>
                     <select name="server_id">
+                        <option selected value="*">-------------</option>
                         <?php $__currentLoopData = $serverData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php if(!optional($item->devices->first())->id): ?>
                                 <option value="<?php echo e($item->id); ?>"><?php echo e($item->ip); ?></option>
@@ -139,8 +155,9 @@
                     <?php endif; ?>
 
                 </td>
-            </form>
-        </tr>
+
+            </tr>
+        </form>
     </table>
 
 <?php $__env->stopSection(); ?>
