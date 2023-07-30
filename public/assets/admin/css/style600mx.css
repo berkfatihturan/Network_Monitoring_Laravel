@@ -82,7 +82,13 @@
     }
 
     header .dropdown-menu {
-        margin: 16px 0 0 -3px !important;
+        margin: 16px 0 0 -2px !important;
+
+    }
+
+    header .dropdown-menu a,
+    header .dropdown-menu i{
+        font-size: 1.2rem !important;
     }
 
 
