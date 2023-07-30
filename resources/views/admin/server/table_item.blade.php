@@ -1,7 +1,13 @@
 <div class="table-data id">{{$item->id}}</div>
 <div class="table-data">{{$item->server_name}}</div>
 <div class="table-data">{{$item->ip}}</div>
-<div class="table-data temp">0°C</div>
+<div class="table-data temp">
+    @if(optional($item->devices->first())->id)
+        {{$item->devices->first()->temp}}°C
+    @else
+        ---°C
+    @endif
+</div>
 <div class="table-data status"><span class="status-info"
                                      style="display: none">{{$item->status}}</span>@if($item->status)
         <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem; content: 'out'"></i>

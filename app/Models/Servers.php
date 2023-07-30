@@ -12,4 +12,9 @@ class Servers extends Model
     public function port(){
         return $this->hasMany(Ports::class);
     }
+
+    public function devices()
+    {
+        return $this->belongsToMany(Devices::class,'rooms');
+    }
 }

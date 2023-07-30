@@ -1,7 +1,13 @@
 <div class="table-data id"><?php echo e($item->id); ?></div>
 <div class="table-data"><?php echo e($item->server_name); ?></div>
 <div class="table-data"><?php echo e($item->ip); ?></div>
-<div class="table-data temp">0°C</div>
+<div class="table-data temp">
+    <?php if(optional($item->devices->first())->id): ?>
+        <?php echo e($item->devices->first()->temp); ?>°C
+    <?php else: ?>
+        ---°C
+    <?php endif; ?>
+</div>
 <div class="table-data status"><span class="status-info"
                                      style="display: none"><?php echo e($item->status); ?></span><?php if($item->status): ?>
         <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem; content: 'out'"></i>

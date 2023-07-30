@@ -4,6 +4,8 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Devices;
+use App\Models\Room;
+use App\Models\Servers;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,10 +37,20 @@ class AdminDevicesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $data = new Room();
+        if(Room::where('servers_id',$request->server_id)->where('devices_id',$id)->first() == null){
+            $data->servers_id = $request->server_id;
+            $data->devices_id = $id;
+            $data->save();
+            return redirect(route('admin_devices_detail',['id'=>$id]));
+        }else{
+            return redirect(route('admin_devices_detail',['id'=>$id]))->with('error','Alrady Added');
+        }
+
     }
+
 
     /**
      * Display the specified resource.
@@ -51,11 +63,14 @@ class AdminDevicesController extends Controller
     public function detail(string $id)
     {
         $settingsData = Settings::first();
-        $deviceData = Devices::all();
+        $deviceData = Devices::find($id);
+        $serverData = Servers::all();
+
 
         return view('admin.devices.detail',[
             'settingsData' => $settingsData,
-            'deviceData' =>$deviceData
+            'deviceData' =>$deviceData,
+            'serverData' =>$serverData,
         ]);
     }
 
@@ -72,14 +87,16 @@ class AdminDevicesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $did,string $sid)
     {
-        //
+        $data = Room::where('servers_id',$sid)->where('devices_id',$did)->delete();
+
+        return redirect(route('admin_devices_detail',['id'=>$did]));
     }
 }

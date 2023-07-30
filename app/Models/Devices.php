@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Devices extends Model
 {
     use HasFactory;
+
+    public function servers(){
+        return $this->belongsToMany(Servers::class,'rooms');
+    }
 }

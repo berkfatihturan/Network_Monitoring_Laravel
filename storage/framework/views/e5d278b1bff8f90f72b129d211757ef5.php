@@ -102,9 +102,8 @@
                     <td class="item_email"><?php echo e($item->temp); ?>°C</td>
                     <td class="item_email"><?php echo e($item->humidity); ?> %</td>
                     <td class="item_settings" title="Settings"
-                        onclick="return !window.open('<?php echo e(route('admin_devices_detail',['id' => 1])); ?>','','width=1000,height=800')"><i class="fa-solid fa-gear"></i>
+                        onclick="return !window.open('<?php echo e(route('admin_devices_detail',['id' => $item->id])); ?>','','width=1000,height=800')"><i class="fa-solid fa-gear"></i>
                     </td>
-
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
