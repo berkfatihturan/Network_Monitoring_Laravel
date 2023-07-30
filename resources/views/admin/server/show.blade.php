@@ -93,13 +93,13 @@
         </tr>
 
         <tr>
-            <th class="item_email">IP</th>
-            <td class="item_email">{{optional($serverData)->ip}}</td>
+            <th class="">IP</th>
+            <td class="">{{optional($serverData)->ip}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Temperature</th>
-            <td class="item_email">
+            <th class="">Temperature</th>
+            <td class="">
                 @if(optional($serverData->devices->first())->id)
                     {{$serverData->devices->first()->temp}}°C
                 @else
@@ -113,8 +113,8 @@
         </tr>
 
         <tr>
-            <th class="item_email">Status</th>
-            <td class="item_email">
+            <th class="">Status</th>
+            <td class="">
                 <span class="status-info" style="display: none">{{$serverData->status}}</span>
                 @if($serverData->status)
                     <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem; content: 'out'"></i>
@@ -126,17 +126,17 @@
         </tr>
 
         <tr>
-            <th class="item_email">Update Date</th>
-            <td class="item_email">{{$serverData->updated_at}}</td>
+            <th class="">Update Date</th>
+            <td class="">{{$serverData->updated_at}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Created at</th>
-            <td class="item_email">{{$serverData->created_at}}</td>
+            <th class="">Created at</th>
+            <td class="">{{$serverData->created_at}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Ports</th>
+            <th class="">Ports</th>
             <td class="">
                 <ul id="port_list">
 
@@ -148,16 +148,16 @@
             </td>
         </tr>
         <tr>
-            <th class="item_email">Notes</th>
-            <td class="item_email">{{$serverData->detail}}</td>
+            <th class="">Notes</th>
+            <td class="">{{$serverData->detail}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Log</th>
-            <td class="item_email">
+            <th class="">Log</th>
+            <td >
                 <ul>
                     @foreach($logData as $item)
-                        <li><pre>{{$item->operation}}</pre></li>
+                        <li>{{$item->operation}}</li>
                     @endforeach
 
                 </ul>

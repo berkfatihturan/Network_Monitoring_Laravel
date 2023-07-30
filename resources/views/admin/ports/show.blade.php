@@ -15,6 +15,7 @@
         main {
             margin-left: 3% !important;
             width: 95% !important;
+            overflow: auto;
         }
 
         #device {
@@ -93,24 +94,24 @@
         </tr>
 
         <tr>
-            <th class="item_email">Port</th>
-            <td class="item_email">{{optional($portData)->port}}</td>
+            <th class="">Port</th>
+            <td class="">{{optional($portData)->port}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Server Name</th>
-            <td class="item_email">{{optional($portData->server)->server_name}}</td>
+            <th class="">Server Name</th>
+            <td class="">{{optional($portData->server)->server_name}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Server Ip</th>
-            <td class="item_email">{{optional($portData->server)->ip}}</td>
+            <th class="">Server Ip</th>
+            <td class="">{{optional($portData->server)->ip}}</td>
         </tr>
 
 
         <tr>
-            <th class="item_email">Status</th>
-            <td class="item_email">
+            <th class="">Status</th>
+            <td class="">
                 <span class="status-info" style="display: none">{{$portData->status}}</span>
                 @if($portData->status)
                     <i class="fa-solid fa-square-check" style="color: green; font-size: 2rem; content: 'out'"></i>
@@ -122,26 +123,26 @@
         </tr>
 
         <tr>
-            <th class="item_email">Update Date</th>
-            <td class="item_email">{{$portData->updated_at}}</td>
+            <th class="">Update Date</th>
+            <td class="">{{$portData->updated_at}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Created at</th>
-            <td class="item_email">{{$portData->created_at}}</td>
+            <th class="">Created at</th>
+            <td class="">{{$portData->created_at}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Notes</th>
-            <td class="item_email">{{$portData->detail}}</td>
+            <th class="">Notes</th>
+            <td class="">{{$portData->detail}}</td>
         </tr>
 
         <tr>
-            <th class="item_email">Log</th>
-            <td class="item_email">
+            <th class="">Log</th>
+            <td class="" style="width: 100%">
                 <ul>
                     @foreach($logData as $item)
-                        <li><pre>{{$item->operation}}</pre></li>
+                        <li>{{$item->operation}}</li>
                     @endforeach
 
                 </ul>
