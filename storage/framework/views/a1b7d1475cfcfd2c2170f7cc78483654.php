@@ -65,9 +65,7 @@
         }
 
         @media only screen and (max-width: 992px) {
-            #device {
-                width: 95vw;
-            }
+
         }
 
 
@@ -126,7 +124,9 @@
                 <td>
                     <select name="server_id">
                         <?php $__currentLoopData = $serverData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($item->id); ?>"><?php echo e($item->ip); ?></option>
+                            <?php if(!optional($item->devices->first())->id): ?>
+                                <option value="<?php echo e($item->id); ?>"><?php echo e($item->ip); ?></option>
+                            <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
 

@@ -126,7 +126,9 @@
                 <td>
                     <select name="server_id">
                         @foreach($serverData as $item)
-                            <option value="{{ $item->id }}">{{ $item->ip }}</option>
+                            @if(!optional($item->devices->first())->id)
+                                <option value="{{ $item->id }}">{{ $item->ip }}</option>
+                            @endif
                         @endforeach
                     </select>
 
