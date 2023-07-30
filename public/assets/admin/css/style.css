@@ -111,11 +111,11 @@ header * {
 }
 
 header .dropdown-menu {
-    margin: 20px 1000px 0 0 !important;
+    margin: 3px 0 0 -23px !important;
     background: rgb(233, 238, 238, 1) !important;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
 }
+
 
 header .dropdown-menu li a {
     font-size: 1.4rem;
@@ -124,14 +124,17 @@ header .dropdown-menu li a {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 80%;
+
 }
 
-header .dropdown-menu li a:hover {
-    color: black;
+header .dropdown-menu li a:hover,
+header .dropdown-menu li a:hover i{
+    color: var(--sidebar-background_color);
 }
 
 header .dropdown-menu li i {
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 

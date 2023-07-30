@@ -15,7 +15,7 @@
 
         <ul class="dropdown-menu">
             <li ><a href="{{route('dashboard')}}" class="float-end"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
-            <li ><a href="{{route('logoutuser')}}" class="float-end" ><i class="fa-solid fa-right-from-bracket ml-4"></i>LogOut</a></li>
+            <li ><a href="{{route('logoutuser')}}" class="float-end"><i class="fa-solid fa-right-from-bracket ml-4"></i>LogOut</a></li>
         </ul>
 
 
