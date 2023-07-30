@@ -37,16 +37,24 @@ class AdminDevicesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    # add relation device and server
     public function store(Request $request,$id)
     {
         $data = new Room();
+        # if device removed and server add to new device remove ex-relation
+        if (Room::where('servers_id',$request->server_id)->first() != null){
+            Room::where('servers_id',$request->server_id)->delete();
+        }
+
+        # check Already exist
         if(Room::where('servers_id',$request->server_id)->where('devices_id',$id)->first() == null){
             $data->servers_id = $request->server_id;
             $data->devices_id = $id;
             $data->save();
             return redirect(route('admin_devices_detail',['id'=>$id]));
         }else{
-            return redirect(route('admin_devices_detail',['id'=>$id]))->with('error','Alrady Added');
+            # if Already exist not add
+            return redirect(route('admin_devices_detail',['id'=>$id]))->with('error','Already Added');
         }
 
     }
@@ -90,9 +98,19 @@ class AdminDevicesController extends Controller
 
     }
 
+    public function reloadPage($id_item)
+    {
+        $item = Devices::find($id_item);
+
+        return view('admin.devices.table_item',[
+            'item' => $item,
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
+    # remove relation device and server
     public function destroy(string $did,string $sid)
     {
         $data = Room::where('servers_id',$sid)->where('devices_id',$did)->delete();

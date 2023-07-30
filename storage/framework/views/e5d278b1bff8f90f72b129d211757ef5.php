@@ -73,8 +73,6 @@
                 overflow: auto;
                 margin-bottom: 5px;
             }
-
-
         }
     </style>
 <?php $__env->stopSection(); ?>
@@ -96,14 +94,8 @@
                 <th class="item_settings"></th>
             </tr>
             <?php $__currentLoopData = $deviceData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                    <td class="item_checkbox"><?php echo e($item->id); ?></td>
-                    <td class="item_name"><?php echo e($item->name); ?></td>
-                    <td class="item_email"><?php echo e($item->temp); ?>°C</td>
-                    <td class="item_email"><?php echo e($item->humidity); ?> %</td>
-                    <td class="item_settings" title="Settings"
-                        onclick="return !window.open('<?php echo e(route('admin_devices_detail',['id' => $item->id])); ?>','','width=1000,height=800')"><i class="fa-solid fa-gear"></i>
-                    </td>
+                <tr id="<?php echo e($item->id); ?>">
+                    <?php echo $__env->make('admin.devices.table_item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -114,7 +106,52 @@
 <?php $__env->startSection('foot'); ?>
     <script>
 
+        var reloadTime = 5000
 
+        const divElements = [
+                <?php $__currentLoopData = $deviceData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            {
+                selector: '#<?php echo e($item->id); ?>', interval: reloadTime
+            }, // Reload every 30 seconds
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        ];
+
+        function reloadDiv(element) {
+
+            var id = $(element.selector).attr('id');
+            var url = "<?php echo e(route('admin_devices_reloadPage', ['id_item' => ':id'])); ?>";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function (response) {
+                    $(element.selector).html(response);
+                },
+                error: function (xhr) {
+                    // Handle any error that may occur during the request
+                }
+            });
+        }
+
+        // Function to initiate the reloading of all div elements
+        function reloadAllDivs() {
+            for (let i = 0; i < divElements.length; i++) {
+                reloadDiv(divElements[i]);
+            }
+        }
+
+        // Call the function to reload all div elements initially
+        reloadAllDivs();
+
+        // Set up intervals for each div element
+        for (let i = 0; i < divElements.length; i++) {
+            setInterval(function (i) {
+                return function () {
+                    reloadDiv(divElements[i]);
+                };
+            }(i), divElements[i].interval);
+        }
     </script>
 <?php $__env->stopSection(); ?>
 

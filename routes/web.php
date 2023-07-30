@@ -62,6 +62,7 @@ Route::middleware(['admin'])->prefix('admin')->name("admin_")->group(function ()
         Route::post('/update', 'update')->name('update');
         Route::get('/destroy/{did}/{sid}', 'destroy')->name('destroy');
         Route::get('/detail/{id}', 'detail')->name('detail');
+        Route::get('/reload/{id_item}', 'reloadPage')->name('reloadPage');
     });
 
     /* Admin Users Panel Routes*/

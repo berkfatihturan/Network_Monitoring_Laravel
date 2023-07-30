@@ -75,8 +75,6 @@
                 overflow: auto;
                 margin-bottom: 5px;
             }
-
-
         }
     </style>
 @endsection
@@ -98,14 +96,8 @@
                 <th class="item_settings"></th>
             </tr>
             @foreach($deviceData as $item)
-                <tr>
-                    <td class="item_checkbox">{{$item->id}}</td>
-                    <td class="item_name">{{$item->name}}</td>
-                    <td class="item_email">{{$item->temp}}°C</td>
-                    <td class="item_email">{{$item->humidity}} %</td>
-                    <td class="item_settings" title="Settings"
-                        onclick="return !window.open('{{route('admin_devices_detail',['id' => $item->id])}}','','width=1000,height=800')"><i class="fa-solid fa-gear"></i>
-                    </td>
+                <tr id="{{$item->id}}">
+                    @include('admin.devices.table_item')
                 </tr>
             @endforeach
 
@@ -116,6 +108,51 @@
 @section('foot')
     <script>
 
+        var reloadTime = 5000
 
+        const divElements = [
+                @foreach($deviceData as $item)
+            {
+                selector: '#{{$item->id}}', interval: reloadTime
+            }, // Reload every 30 seconds
+            @endforeach
+        ];
+
+        function reloadDiv(element) {
+
+            var id = $(element.selector).attr('id');
+            var url = "{{ route('admin_devices_reloadPage', ['id_item' => ':id']) }}";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function (response) {
+                    $(element.selector).html(response);
+                },
+                error: function (xhr) {
+                    // Handle any error that may occur during the request
+                }
+            });
+        }
+
+        // Function to initiate the reloading of all div elements
+        function reloadAllDivs() {
+            for (let i = 0; i < divElements.length; i++) {
+                reloadDiv(divElements[i]);
+            }
+        }
+
+        // Call the function to reload all div elements initially
+        reloadAllDivs();
+
+        // Set up intervals for each div element
+        for (let i = 0; i < divElements.length; i++) {
+            setInterval(function (i) {
+                return function () {
+                    reloadDiv(divElements[i]);
+                };
+            }(i), divElements[i].interval);
+        }
     </script>
 @endsection
