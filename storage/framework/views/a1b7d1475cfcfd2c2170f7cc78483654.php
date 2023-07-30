@@ -17,7 +17,7 @@
 
         #device {
             border-block: 1px solid #ddd;
-            width: 90vw;
+            width: 95vw;
         }
 
         #device th, #device td {
@@ -62,6 +62,12 @@
 
         #server_relation_list li i:hover {
             color: red;
+        }
+
+        @media only screen and (max-width: 992px) {
+            #device {
+                width: 95vw;
+            }
         }
 
 
@@ -114,7 +120,7 @@
 
         <tr>
             <form action="<?php echo e(route('admin_devices_store',['id' => $deviceData->id])); ?>" method="POST"
-                  enctype="multipart/form-data">,
+                  enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
                 <th>Add a Server</th>
                 <td>
