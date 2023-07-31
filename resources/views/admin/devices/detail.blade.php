@@ -94,6 +94,10 @@
             select{
                 width: 100%;
             }
+
+            table{
+                margin-bottom: 20px;
+            }
         }
 
 
