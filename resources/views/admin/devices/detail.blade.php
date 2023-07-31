@@ -72,10 +72,28 @@
             padding: 5px 15px;
 
             border-inline: 1px solid #ddd;
-            color: var(--sidebar-text_color);
+            color: black;
         }
 
         @media only screen and (max-width: 992px) {
+            .mail_settings{
+                margin: 0px;
+                display: inline-block;
+                padding: 5px 0px;
+                border-inline: none;
+            }
+            td{
+                padding-top: 10px !important;
+            }
+
+            input[type=submit]{
+                margin-top: 10px;
+                width: 90%;
+            }
+
+            select{
+                width: 100%;
+            }
         }
 
 
