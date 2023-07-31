@@ -2,8 +2,12 @@
 
 namespace App\Console;
 
+use App\Mail\AlertMail;
+use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class Kernel extends ConsoleKernel
 {
@@ -35,4 +39,5 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
 }

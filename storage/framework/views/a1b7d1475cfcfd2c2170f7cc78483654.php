@@ -65,15 +65,15 @@
         }
 
         .mail_settings{
-            margin-left: 30px;
-            background: var(--sidebar-background_color);
-            padding: 10px 15px;
-            border-radius: 10px;
+            margin-left: 25px;
+            display: inline-block;
+            padding: 5px 15px;
+
+            border-inline: 1px solid #ddd;
             color: var(--sidebar-text_color);
         }
 
         @media only screen and (max-width: 992px) {
-
         }
 
 
@@ -103,7 +103,7 @@
 
             <tr>
                 <th class="">Temperature</th>
-                <td class="">
+                <td class="" style="padding-block: 0">
                     <?php echo e(optional($deviceData)->temp); ?>°C
                     <span class="mail_settings"> Set Mail Notification: <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"></span>
                 </td>
@@ -111,7 +111,7 @@
 
             <tr>
                 <th class="">Humıdıty</th>
-                <td class=""><?php echo e(optional($deviceData)->humidity); ?> %
+                <td class="" style="padding-block: 0"><?php echo e(optional($deviceData)->humidity); ?> %
                     <span class="mail_settings"> Set Mail Notification: <input name="mailHumidity" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->humidity); ?>"></span>
                 </td>
             </tr>
