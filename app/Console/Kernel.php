@@ -19,9 +19,9 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:check-database')->everyMinute()->runInBackground();
-        $schedule->command('app:check-ports')->everyMinute()->runInBackground();
-        $schedule->command('app:check-temp')->everyMinute()->runInBackground();
+        $schedule->command('app:check-database')->everyTwoMinutes()->runInBackground();
+        $schedule->command('app:check-ports')->everyTwoMinutes()->runInBackground();
+        $schedule->command('app:check-temp')->everyFifteenMinutes()->runInBackground();
 
         // $schedule->command('inspire')->hourly();
     }
