@@ -18,7 +18,7 @@
             $("body").toggleClass("blur");
         }
 
-        function    cancelUpdate() {
+        function cancelUpdate() {
 
             $("#updateForm").find('input[name="id"]').val("");
             $("#updateForm").find('input[name="server_name"]').val("");
@@ -161,4 +161,4 @@
 
 
 
-<?php echo $__env->make('layouts.adminbase', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\BFT\Project\Laravel\project_x\resources\views/admin/server/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.adminbase', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH X:\BFT\Project\Laravel\project_x\resources\views/admin/server/index.blade.php ENDPATH**/ ?>
