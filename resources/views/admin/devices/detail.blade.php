@@ -100,6 +100,13 @@
             }
         }
 
+        <!-- -->
+
+        #my-chart.line {
+            height: 200px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
 
     </style>
 
@@ -189,6 +196,13 @@
                             <li>{{$item->operation}}</li>
                         @endforeach
                     </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="">DENEME</th>
+                <td >
+                    @include('admin.devices.dataset_chart')
                 </td>
             </tr>
         </form>

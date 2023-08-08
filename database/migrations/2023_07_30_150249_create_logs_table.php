@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('process_type')->unsigned();
             $table->integer('process_id')->unsigned();
             $table->text('operation');
+            $table->string('temp')->nullable()->default("NULL");
+            $table->string('humidity')->nullable("NULL");
             $table->timestamps();
         });
     }

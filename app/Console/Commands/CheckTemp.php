@@ -73,14 +73,15 @@ class CheckTemp extends Command
 
     function saveToLog($item,$status)
     {
+        $limit = 20;
         // Aynı server_id'ye sahip olan kayıtları tarihlerine göre sıralayarak en eski olanı buluyoruz
         $oldestRecords = Log::where('process_id', $item->id)
             ->where('process_type', 3)
             ->orderBy('created_at')
-            ->limit(5) // En eski 5 kayıt
+            ->limit($limit) // En eski 5 kayıt
             ->get();
 
-        if ($oldestRecords->count() >= 5) {
+        if ($oldestRecords->count() >= $limit) {
             $oldestRecord = $oldestRecords->first();
             $oldestRecord->delete();
         }
@@ -88,6 +89,8 @@ class CheckTemp extends Command
         $log = new Log();
         $log->process_type = 3;
         $log->process_id = $item->id;
+        $log->temp = $item->temp;
+        $log->humidity = $item->humidity;
 
         $text = "".json_encode($status)." |  ".optional($item)->temp."  |  ".optional($item)->humidity."  |  ".$this->asDateTime();
         $log->operation = $text;
