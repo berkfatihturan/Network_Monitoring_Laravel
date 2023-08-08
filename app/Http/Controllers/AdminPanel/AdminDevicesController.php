@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\DeviceMailSettings;
 use App\Models\Devices;
+use App\Models\Log;
 use App\Models\Room;
 use App\Models\Servers;
 use App\Models\Settings;
@@ -88,12 +89,15 @@ class AdminDevicesController extends Controller
         $settingsData = Settings::first();
         $deviceData = Devices::find($id);
         $serverData = Servers::all();
+        $logData = Log::where('process_id',$id)->where('process_type',3)->get();
 
 
         return view('admin.devices.detail',[
             'settingsData' => $settingsData,
             'deviceData' =>$deviceData,
             'serverData' =>$serverData,
+            'logData' =>$logData,
+
         ]);
     }
 

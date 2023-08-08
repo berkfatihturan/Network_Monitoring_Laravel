@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('app:check-database')->everyTwoMinutes()->runInBackground();
         $schedule->command('app:check-ports')->everyTwoMinutes()->runInBackground();
-        $schedule->command('app:check-temp')->everyFifteenMinutes()->runInBackground();
+        $schedule->command('app:check-temp')->everyMinute()->runInBackground();
 
         // $schedule->command('inspire')->hourly();
     }

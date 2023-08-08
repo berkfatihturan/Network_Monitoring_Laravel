@@ -180,6 +180,17 @@
                 </td>
 
             </tr>
+
+            <tr>
+                <th class="">Log</th>
+                <td >
+                    <ul>
+                        @foreach($logData as $item)
+                            <li>{{$item->operation}}</li>
+                        @endforeach
+                    </ul>
+                </td>
+            </tr>
         </form>
     </table>
 

@@ -71,6 +71,29 @@ class CheckTemp extends Command
         return $currentTime->toDateTimeString();
     }
 
+    function saveToLog($item,$status)
+    {
+        // Aynı server_id'ye sahip olan kayıtları tarihlerine göre sıralayarak en eski olanı buluyoruz
+        $oldestRecords = Log::where('process_id', $item->id)
+            ->where('process_type', 3)
+            ->orderBy('created_at')
+            ->limit(5) // En eski 5 kayıt
+            ->get();
+
+        if ($oldestRecords->count() >= 5) {
+            $oldestRecord = $oldestRecords->first();
+            $oldestRecord->delete();
+        }
+
+        $log = new Log();
+        $log->process_type = 3;
+        $log->process_id = $item->id;
+
+        $text = "".json_encode($status)." |  ".optional($item)->temp."  |  ".optional($item)->humidity."  |  ".$this->asDateTime();
+        $log->operation = $text;
+        $log->save();
+    }
+
 
     public function handle()
     {
@@ -102,6 +125,8 @@ class CheckTemp extends Command
                 $details['type'] ="Humidity";
                 $this->sendMailtoUsers($details);
             }
+
+            $this->saveToLog($item,true);
 
         }
 
