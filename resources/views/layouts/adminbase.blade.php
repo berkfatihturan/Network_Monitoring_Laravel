@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@yield("title")</title>
+    <title>@yield("title") System Monitoring Application!</title>
     @yield('head')
 
     <script src="https://kit.fontawesome.com/d9aa960ef9.js" crossorigin="anonymous"></script>
@@ -97,6 +97,5 @@
 
 </script>
 <script src="{{asset('assets')}}/admin/js/script.js"></script>
-
 </body>
 

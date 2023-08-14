@@ -199,8 +199,8 @@
             </tr>
 
             <tr>
-                <th class="">DENEME</th>
-                <td >
+                <th class=""></th>
+                <td style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
                     <?php echo $__env->make('admin.devices.dataset_chart', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </td>
             </tr>

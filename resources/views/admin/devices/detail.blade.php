@@ -200,8 +200,8 @@
             </tr>
 
             <tr>
-                <th class="">DENEME</th>
-                <td >
+                <th class=""></th>
+                <td style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
                     @include('admin.devices.dataset_chart')
                 </td>
             </tr>

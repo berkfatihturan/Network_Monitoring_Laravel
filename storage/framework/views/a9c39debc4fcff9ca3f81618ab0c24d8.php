@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title><?php echo $__env->yieldContent("title"); ?></title>
+    <title><?php echo $__env->yieldContent("title"); ?> System Monitoring Application!</title>
     <?php echo $__env->yieldContent('head'); ?>
 
     <script src="https://kit.fontawesome.com/d9aa960ef9.js" crossorigin="anonymous"></script>
@@ -97,7 +97,6 @@
 
 </script>
 <script src="<?php echo e(asset('assets')); ?>/admin/js/script.js"></script>
-
 </body>
 
 <?php /**PATH X:\BFT\Project\Laravel\project_x\resources\views/layouts/adminbase.blade.php ENDPATH**/ ?>
