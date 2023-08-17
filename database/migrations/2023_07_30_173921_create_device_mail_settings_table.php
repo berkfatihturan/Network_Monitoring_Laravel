@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('device_mail_settings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('devices_id')->nullable();
-            $table->string('min_temp')->nullable();
-            $table->string('max_temp')->nullable();
-            $table->string('min_humidity')->nullable();
-            $table->string('max_humidity')->nullable();
+            $table->string('temp')->nullable();
+            $table->string('temp_max')->nullable();
+            $table->string('humidity')->nullable();
+            $table->string('humidity_max')->nullable();
         });
     }
 

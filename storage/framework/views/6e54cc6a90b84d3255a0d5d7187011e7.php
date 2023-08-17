@@ -134,7 +134,7 @@
                 <th class="">Temperature</th>
                 <td class="" style="padding-block: 0">
                     <?php echo e(optional($deviceData)->temp); ?>°C
-                    <span class="mail_settings"> Set Mail Notification: <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"></span>
+                    <span class="mail_settings"> Set Mail Notification: (Min) <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"> (Max) <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"></span>
                 </td>
             </tr>
 

@@ -57,6 +57,7 @@ class AdminDevicesController extends Controller
         }
         $mailSetting->devices_id = $id;
         $mailSetting->temp = $request->mailTemp;
+        $mailSetting->temp_max = $request->mailTempMax;
         $mailSetting->humidity = $request->mailHumidity;
         $mailSetting->save();
 
