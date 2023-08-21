@@ -134,14 +134,14 @@
                 <th class="">Temperature</th>
                 <td class="" style="padding-block: 0">
                     <?php echo e(optional($deviceData)->temp); ?>°C
-                    <span class="mail_settings"> Set Mail Notification: (Min) <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"> (Max) <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"></span>
+                    <span class="mail_settings"> If it is less than <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"> °C and higher than <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp_max); ?>"> °C, Send Mail</span>
                 </td>
             </tr>
 
             <tr>
                 <th class="">Humıdıty</th>
-                <td class="" style="padding-block: 0"><?php echo e(optional($deviceData)->humidity); ?> %
-                    <span class="mail_settings"> Set Mail Notification: <input name="mailHumidity" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->humidity); ?>"></span>
+                <td class="" style="padding-block: 0"><?php echo e(optional($deviceData)->humidity); ?>%
+                    <span class="mail_settings"> If it is less than <input name="mailHumidity" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->humidity); ?>"> % and higher than <input name="mailHumidityMax" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->humidity_max); ?>"> %, Send Mail</span>
                 </td>
             </tr>
 
@@ -175,7 +175,7 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
 
-                    <input type="submit" value="ADD"
+                    <input type="submit" value="SAVE"
                            style="background-color: black; color: white; padding: 3px 10px; border-radius: 10px; margin-left: 10px">
 
                     <?php if(\Illuminate\Support\Facades\Session::get('error')!=null): ?>

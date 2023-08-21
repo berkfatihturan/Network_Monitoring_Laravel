@@ -14,7 +14,6 @@
     @endif at {{$details['updated_at']}}.
 </p>
 
-<p>Teşekkürler,</p>
 <p>{{ $settings->company_name }}</p>
 </body>
 </html>

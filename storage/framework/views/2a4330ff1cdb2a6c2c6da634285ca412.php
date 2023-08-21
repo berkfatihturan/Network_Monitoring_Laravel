@@ -1,19 +1,4 @@
-<!--<table class="charts-css line show-labels" id="my-chart">
 
-    <tbody>
-
-    <?php $backward = 0 ?>
-<?php $__currentLoopData = $logData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <tr>
-        <td style="--start:<?php echo e(optional($backward)->temp/100); ?>; --size:<?php echo e(intval(optional($item)->temp)/100); ?> "><span
-                    class="data"></span></td>
-            <?php $backward = $item ?>
-        </tr>
-
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-</tbody>
-
-</table>-->
 
 <table class="table" id="dataTable" style="display: none;">
     <thead>
@@ -27,8 +12,8 @@
     <tr>
         <td><?php echo e($item->updated_at); ?></td>
         <td><?php echo e($item->temp); ?></td>
-        <td>200</td>
-        <td>89</td>
+        <td></td>
+        <td></td>
     </tr>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>

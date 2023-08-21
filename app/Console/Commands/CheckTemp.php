@@ -38,12 +38,12 @@ class CheckTemp extends Command
     //return true if port work
     function checkTemp($device)
     {
-        return $device->temp > $device->mailSettings->temp;
+        return ($device->temp > $device->mailSettings->temp_max) || ($device->temp < $device->mailSettings->temp);
     }
 
     function checkHumidity($device)
     {
-        return $device->humidity > $device->mailSettings->humidity;
+        return ($device->humidity > $device->mailSettings->humidity_max) || ($device->humidity < $device->mailSettings->humidity);
     }
 
     function sendMailtoUsers($details)

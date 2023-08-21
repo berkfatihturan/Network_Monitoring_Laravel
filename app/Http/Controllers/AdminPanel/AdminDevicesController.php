@@ -55,10 +55,12 @@ class AdminDevicesController extends Controller
         }else{
             $mailSetting = DeviceMailSettings::where('devices_id',$id)->first();
         }
+
         $mailSetting->devices_id = $id;
         $mailSetting->temp = $request->mailTemp;
         $mailSetting->temp_max = $request->mailTempMax;
         $mailSetting->humidity = $request->mailHumidity;
+        $mailSetting->humidity_max = $request->mailHumidityMax;
         $mailSetting->save();
 
         # check Already exist
