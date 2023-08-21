@@ -134,15 +134,15 @@
 
             <tr>
                 <th class="">Temperature</th>
-                <td class="" style="padding-block: 0">
-                    {{optional($deviceData)->temp}}°C
+                <td style="padding-block: 0">
+                    <span id="temp">{{optional($deviceData)->temp}}</span>°C
                     <span class="mail_settings"> If it is less than <input name="mailTemp" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->temp}}"> °C and higher than <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->temp_max}}"> °C, Send Mail</span>
                 </td>
             </tr>
 
             <tr>
-                <th class="">Humıdıty</th>
-                <td class="" style="padding-block: 0">{{optional($deviceData)->humidity}}%
+                <th class="">Humidity</th>
+                <td style="padding-block: 0"><span id="humidity">{{optional($deviceData)->humidity}}</span>%
                     <span class="mail_settings"> If it is less than <input name="mailHumidity" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->humidity}}"> % and higher than <input name="mailHumidityMax" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->humidity_max}}"> %, Send Mail</span>
                 </td>
             </tr>
@@ -190,18 +190,14 @@
 
             <tr>
                 <th class="">Log</th>
-                <td >
-                    <ul>
-                        @foreach($logData as $item)
-                            <li>{{$item->operation}}</li>
-                        @endforeach
-                    </ul>
+                <td id="log_table">
+                    @include('admin.devices.log_table')
                 </td>
             </tr>
 
             <tr>
                 <th class=""></th>
-                <td style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
+                <td id="dataset_chart" style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
                     @include('admin.devices.dataset_chart')
                 </td>
             </tr>
@@ -213,6 +209,61 @@
 @section('foot')
     <script>
 
+        var reloadTime = 30000 // Reload every 30 seconds
 
+        const divElements = [
+
+            {
+                selector: '#temp', interval: reloadTime
+            },
+            {
+                selector: '#humidity', interval: reloadTime
+            },
+            {
+                selector: '#dataset_chart', interval: reloadTime
+            },
+            {
+                selector: '#log_table', interval: reloadTime
+            }
+        ];
+
+        function reloadDiv(element) {
+
+            var device_id = {{$deviceData->id}};
+            var data_name = $(element.selector).attr('id');
+            var url = "{{ route('admin_devices_reloadShowPage', ['data_name' => ':data_name','device_id' => ':device_id']) }}";
+            url = url.replace(':device_id', device_id);
+            url = url.replace(':data_name', data_name);
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function (response) {
+                    $(element.selector).html(response);
+                },
+                error: function (xhr) {
+                    // Handle any error that may occur during the request
+                }
+            });
+        }
+
+        // Function to initiate the reloading of all div elements
+        function reloadAllDivs() {
+            for (let i = 0; i < divElements.length; i++) {
+                reloadDiv(divElements[i]);
+            }
+        }
+
+        // Call the function to reload all div elements initially
+        reloadAllDivs();
+
+        // Set up intervals for each div element
+        for (let i = 0; i < divElements.length; i++) {
+            setInterval(function (i) {
+                return function () {
+                    reloadDiv(divElements[i]);
+                };
+            }(i), divElements[i].interval);
+        }
     </script>
 @endsection

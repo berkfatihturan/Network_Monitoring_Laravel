@@ -65,6 +65,7 @@ Route::middleware(['admin'])->prefix('admin')->name("admin_")->group(function ()
         Route::get('/destroy/{did}/{sid}', 'destroy')->name('destroy');
         Route::get('/detail/{id}', 'detail')->name('detail');
         Route::get('/reload/{id_item}', 'reloadPage')->name('reloadPage');
+        Route::get('/reloadShow/{data_name}/{device_id}', 'reloadShowPage')->name('reloadShowPage');
     });
 
     /* Admin Users Panel Routes*/

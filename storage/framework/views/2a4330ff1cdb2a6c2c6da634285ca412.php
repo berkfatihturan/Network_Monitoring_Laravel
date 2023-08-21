@@ -4,8 +4,8 @@
     <thead>
     <th>Year</th>
     <th>Temp</th>
-    <th>Turnover ($)</th>
-    <th>Profit ($)</th>
+    <th></th>
+    <th></th>
     </thead>
     <tbody>
     <?php $__currentLoopData = $logData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

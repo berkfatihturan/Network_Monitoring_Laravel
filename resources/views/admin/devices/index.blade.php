@@ -88,19 +88,7 @@
 
     <div class="table-form-box">
         <table id="users">
-            <tr>
-                <th class="item_checkbox">Id</th>
-                <th class="item_name">NAME</th>
-                <th class="item_email">TEMPERATURE</th>
-                <th class="item_email">HUMIDITY</th>
-                <th class="item_settings"></th>
-            </tr>
-            @foreach($deviceData as $item)
-                <tr id="{{$item->id}}">
-                    @include('admin.devices.table_item')
-                </tr>
-            @endforeach
-
+            @include('admin.devices.table_item')
         </table>
     </div>
 @endsection
@@ -109,13 +97,11 @@
     <script>
 
         var reloadTime = 5000
-
         const divElements = [
-                @foreach($deviceData as $item)
             {
-                selector: '#{{$item->id}}', interval: reloadTime
+                selector: '#users', interval: reloadTime
             }, // Reload every 30 seconds
-            @endforeach
+
         ];
 
         function reloadDiv(element) {

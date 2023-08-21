@@ -4,8 +4,8 @@
     <thead>
     <th>Year</th>
     <th>Temp</th>
-    <th>Turnover ($)</th>
-    <th>Profit ($)</th>
+    <th></th>
+    <th></th>
     </thead>
     <tbody>
     @foreach($logData as $item)

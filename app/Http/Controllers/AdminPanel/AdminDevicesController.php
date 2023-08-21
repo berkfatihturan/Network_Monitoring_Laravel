@@ -122,11 +122,32 @@ class AdminDevicesController extends Controller
 
     public function reloadPage($id_item)
     {
-        $item = Devices::find($id_item);
+        $deviceData = Devices::all();
 
         return view('admin.devices.table_item',[
-            'item' => $item,
+            'deviceData' => $deviceData,
         ]);
+    }
+
+    public function reloadShowPage($data_name,$device_id)
+    {
+        $item = Devices::find($device_id);
+
+        if ($data_name == 'temp')
+           return $item->temp;
+        elseif ($data_name == 'humidity'){
+            return $item->humidity;
+        }elseif ($data_name == 'dataset_chart'){
+            $logData = Log::where('process_id',$device_id)->where('process_type',3)->get();
+            return view('admin.devices.dataset_chart',[
+                'logData' => $logData,
+            ]);
+        }elseif ($data_name== 'log_table'){
+            $logData = Log::where('process_id',$device_id)->where('process_type',3)->get();
+            return view('admin.devices.log_table',[
+                'logData' => $logData,
+            ]);
+        }
     }
 
     /**

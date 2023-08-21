@@ -86,19 +86,7 @@
 
     <div class="table-form-box">
         <table id="users">
-            <tr>
-                <th class="item_checkbox">Id</th>
-                <th class="item_name">NAME</th>
-                <th class="item_email">TEMPERATURE</th>
-                <th class="item_email">HUMIDITY</th>
-                <th class="item_settings"></th>
-            </tr>
-            <?php $__currentLoopData = $deviceData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr id="<?php echo e($item->id); ?>">
-                    <?php echo $__env->make('admin.devices.table_item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+            <?php echo $__env->make('admin.devices.table_item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </table>
     </div>
 <?php $__env->stopSection(); ?>
@@ -107,13 +95,11 @@
     <script>
 
         var reloadTime = 5000
-
         const divElements = [
-                <?php $__currentLoopData = $deviceData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             {
-                selector: '#<?php echo e($item->id); ?>', interval: reloadTime
+                selector: '#users', interval: reloadTime
             }, // Reload every 30 seconds
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
         ];
 
         function reloadDiv(element) {
