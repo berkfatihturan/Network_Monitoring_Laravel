@@ -104,6 +104,11 @@
 
 
 
+    #device{
+        display: inline-block;
+        overflow: auto;
+        width: 94.5vw;
+    }
 
 
 
