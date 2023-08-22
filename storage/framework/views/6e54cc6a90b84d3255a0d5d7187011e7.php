@@ -75,11 +75,12 @@
 
         @media only screen and (max-width: 992px) {
             .mail_settings{
-                margin: 0px;
+                margin: 0px !important;
                 display: inline-block;
                 padding: 5px 0px;
                 border-inline: none;
             }
+
             td{
                 padding-top: 10px !important;
             }
