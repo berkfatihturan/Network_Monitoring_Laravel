@@ -9,7 +9,7 @@
 
         }
 
-        .table-form-box{
+        .table-form-box {
             margin-top: 24px;
             margin-bottom: 10px;
         }
@@ -80,7 +80,8 @@
             <table id="users">
                 <tr>
                     <th class="item_checkbox"><input type="checkbox"></th>
-                    <th class="item_name">NAME</th>
+                    <th class="item_name" style="width: 2%;"></th>
+                    <th class="item_name" style="padding-left: 10px">NAME</th>
                     <th class="item_email">EMAIL</th>
                     <th class="item_status">STATUS</th>
                     <th></th>
@@ -92,7 +93,13 @@
                                                          <?php endif; ?>
                                                          <?php if( \Illuminate\Support\Facades\Auth::id() == $item->id): ?> style="pointer-events: none;"
                                 <?php endif; ?>></td>
-                        <td class="item_name"><?php echo e($item->name); ?></td>
+                        <td class="item_name" style="padding-right: 0; ">
+                            <span class="user-profile"style="margin-right: 10px"><?php echo e($item->name[0]); ?></span>
+                        </td>
+                        <td class="item_name" style="padding-left: 10px; position: relative; top: 5px">
+                            <?php echo e($item->name); ?>
+
+                        </td>
                         <td class="item_email"><?php echo e($item->email); ?></td>
                         <td class="item_status"><?php if( optional($item->user_login_permission)->is_allowed): ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="green">
@@ -107,7 +114,9 @@
                                         d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
                                 </svg>No Authority
                             <?php endif; ?></td>
-                        <td class="item_delete"><a class="btn btn-danger" href="<?php echo e(route('admin_users_destroy',['id' => $item->id])); ?>" <?php if( \Illuminate\Support\Facades\Auth::id() == $item->id): ?> style="pointer-events: none;"
+                        <td class="item_delete"><a class="btn btn-danger"
+                                                   href="<?php echo e(route('admin_users_destroy',['id' => $item->id])); ?>"
+                                                   <?php if( \Illuminate\Support\Facades\Auth::id() == $item->id): ?> style="pointer-events: none;"
                                 <?php endif; ?>>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" fill="white">
                                     <path

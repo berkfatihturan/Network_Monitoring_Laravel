@@ -65,7 +65,14 @@
     }
 
     .user-info .user-profile{
-        width: 30px;
+        width: 40px;
+        position: static;
+        font-size: 1.5rem;
+
+    }
+
+    .user-info .dropdown-toggle {
+        margin: 0 5px 0 0;
     }
 
     .header-title{
@@ -84,6 +91,10 @@
     header .dropdown-menu {
         margin: 16px 0 0 0px !important;
 
+    }
+
+    .dropdown-toggle::after {
+        opacity: 1 !important;
     }
 
     header .dropdown-menu a,

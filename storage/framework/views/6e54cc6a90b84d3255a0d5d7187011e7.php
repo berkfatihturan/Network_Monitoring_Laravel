@@ -134,7 +134,7 @@
                 <th class="">Temperature</th>
                 <td style="padding-block: 0">
                     <span id="temp"><?php echo e(optional($deviceData)->temp); ?></span>°C
-                    <span class="mail_settings"> If it is less than <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"> °C and higher than <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp_max); ?>"> °C, Send Mail</span>
+                    <span class="mail_settings" style="margin-left: 22px;"> If it is less than <input name="mailTemp" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp); ?>"> °C and higher than <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="<?php echo e(optional($deviceData->mailSettings)->temp_max); ?>"> °C, Send Mail</span>
                 </td>
             </tr>
 
@@ -187,17 +187,17 @@
 
             </tr>
 
-            <tr>
-                <th class="">Log</th>
-                <td id="log_table">
-                    <?php echo $__env->make('admin.devices.log_table', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <tr style="background: white">
+                <th class=""></th>
+                <td id="dataset_chart" style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
+                    <?php echo $__env->make('admin.devices.dataset_chart', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </td>
             </tr>
 
             <tr>
-                <th class=""></th>
-                <td id="dataset_chart" style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
-                    <?php echo $__env->make('admin.devices.dataset_chart', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <th class="">Log</th>
+                <td id="log_table">
+                    <?php echo $__env->make('admin.devices.log_table', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </td>
             </tr>
         </form>

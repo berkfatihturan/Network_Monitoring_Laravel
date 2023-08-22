@@ -136,7 +136,7 @@
                 <th class="">Temperature</th>
                 <td style="padding-block: 0">
                     <span id="temp">{{optional($deviceData)->temp}}</span>°C
-                    <span class="mail_settings"> If it is less than <input name="mailTemp" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->temp}}"> °C and higher than <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->temp_max}}"> °C, Send Mail</span>
+                    <span class="mail_settings" style="margin-left: 22px;"> If it is less than <input name="mailTemp" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->temp}}"> °C and higher than <input name="mailTempMax" type="number" min="0" style="width: 50px;" value="{{optional($deviceData->mailSettings)->temp_max}}"> °C, Send Mail</span>
                 </td>
             </tr>
 
@@ -188,17 +188,17 @@
 
             </tr>
 
-            <tr>
-                <th class="">Log</th>
-                <td id="log_table">
-                    @include('admin.devices.log_table')
+            <tr style="background: white">
+                <th class=""></th>
+                <td id="dataset_chart" style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
+                    @include('admin.devices.dataset_chart')
                 </td>
             </tr>
 
             <tr>
-                <th class=""></th>
-                <td id="dataset_chart" style="position: relative; right: 100px; max-width: 90vw; overflow: auto">
-                    @include('admin.devices.dataset_chart')
+                <th class="">Log</th>
+                <td id="log_table">
+                    @include('admin.devices.log_table')
                 </td>
             </tr>
         </form>

@@ -90,9 +90,10 @@ header * {
 .user-info .dropdown-toggle {
     background: transparent;
     border: none;
-    margin: 0;
+    margin: 0 10px 0 0;
     padding: 0;
     font-size: 1.4rem;
+    direction: rtl;
 }
 
 .user-info .dropdown-toggle:focus {
@@ -101,17 +102,42 @@ header * {
 
 .user-info .dropdown-menu {
     background: black;
+
 }
+
+.dropdown-toggle::after {
+    opacity: 0;
+    position: relative;
+    transition: opacity .5s;
+
+}
+.user-info:hover .dropdown-toggle::after {
+    opacity: 1;
+}
+
+.user-info:hover p {
+    text-decoration: underline;
+}
+
 
 .user-profile {
     display: inline-block;
     border-radius: 50%;
     width: 50px;
     border: 1px solid black;
+    background: linear-gradient(to right, var(--color-1), var(--color-2));
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    top:5px;
+    text-transform: uppercase;
 }
 
+
+
 header .dropdown-menu {
-    margin: 3px 0 0 -23px !important;
+    margin: -13px 0px 0px 0 !important;
     background: rgb(233, 238, 238, 1) !important;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
