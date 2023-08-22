@@ -15,6 +15,7 @@
 
 
         <ul class="dropdown-menu">
+            <li class="dropdown-menu_profile_name"><a href="<?php echo e(route('admin_profile_index')); ?>" class="float-end " style="font-size: 1.3rem!important;"><?php echo e(Auth::user()->name); ?></a></li>
             <li ><a href="<?php echo e(route('dashboard')); ?>" class="float-end"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
             <li ><a href="<?php echo e(route('logoutuser')); ?>" class="float-end"><i class="fa-solid fa-right-from-bracket ml-4"></i>LogOut</a></li>
         </ul>
