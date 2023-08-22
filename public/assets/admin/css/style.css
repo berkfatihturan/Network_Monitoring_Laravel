@@ -66,7 +66,6 @@ header * {
 }
 
 .user-info p {
-    margin: 0 !important;
     display: inline-block;
     padding-block: 1.3vh;
 }
@@ -90,10 +89,14 @@ header * {
 .user-info .dropdown-toggle {
     background: transparent;
     border: none;
-    margin: 0 10px 0 0;
+    margin: 0 0px 0 0;
     padding: 0;
     font-size: 1.4rem;
     direction: rtl;
+}
+
+.user-info .dropdown-toggle p {
+    margin-right: 5px;
 }
 
 .user-info .dropdown-toggle:focus {
@@ -102,6 +105,8 @@ header * {
 
 .user-info .dropdown-menu {
     background: black;
+    width: 85%;
+    min-width: 175px;
 
 }
 

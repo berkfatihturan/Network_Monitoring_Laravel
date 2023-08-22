@@ -9,9 +9,10 @@
     <div class="user-info" id="user-info">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
            data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="user-profile">{{Auth::user()->name[0]}}</span>
             <p class="" style="padding-left: 5px; font-size: 1.6rem">{{Auth::user()->name}}</p>
         </a>
-        <span class="user-profile">{{Auth::user()->name[0]}}</span>
+
 
         <ul class="dropdown-menu">
             <li ><a href="{{route('dashboard')}}" class="float-end"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
