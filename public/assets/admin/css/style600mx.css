@@ -110,6 +110,11 @@
         width: 94.5vw;
     }
 
+    .dropdown-menu_profile_name{
+        display: inline-block;
+    }
+
+
     .dropdown-menu_profile_name a{
         margin-bottom: 0;
     }
